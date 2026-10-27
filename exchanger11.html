@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ea580c">
+<title>Exchanger - Indian College Exchange & Rental Hub</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f8fafc;--surface:#fff;--surface2:#f1f5f9;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--brand:#ea580c;--brand2:#f97316}
+html.dark{--bg:#0b1020;--surface:#111827;--surface2:#1f2937;--text:#e5e7eb;--muted:#94a3b8;--border:#273244}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+.surface{background:var(--surface);border:1px solid var(--border)}
+.s2{background:var(--surface2)}
+.muted{color:var(--muted)}
+.hdr{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--surface) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.inp{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:1rem;padding:.7rem 1rem;font-size:.85rem;font-weight:500;color:var(--text)}
+.inp:focus{outline:2px solid var(--brand2);outline-offset:0}
+select.inp{padding-right:.5rem}
+.lbl{display:block;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:700;border-radius:1rem;padding:.65rem 1.1rem;font-size:.8rem;transition:all .15s;cursor:pointer;border:1px solid transparent;text-align:center}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-primary{background:linear-gradient(90deg,#f97316,#ea580c);color:#fff;box-shadow:0 8px 20px -8px rgba(234,88,12,.6)}
+.btn-primary:hover:not(:disabled){filter:brightness(1.07);transform:translateY(-1px)}
+.btn-dark{background:#0f172a;color:#fff}
+html.dark .btn-dark{background:#e2e8f0;color:#0f172a}
+.btn-soft{background:var(--surface2);color:var(--text);border-color:var(--border)}
+.btn-soft:hover:not(:disabled){border-color:var(--brand2)}
+.btn-green{background:#059669;color:#fff}
+.btn-indigo{background:#4f46e5;color:#fff}
+.btn-danger{background:#fff1f2;color:#be123c;border-color:#fecdd3}
+html.dark .btn-danger{background:#3b0d18;color:#fda4af;border-color:#7f1d3a}
+.btn-sm{padding:.45rem .8rem;font-size:.72rem;border-radius:.8rem}
+.icon-btn{width:2.25rem;height:2.25rem;border-radius:.9rem;display:inline-flex;align-items:center;justify-content:center;background:var(--surface2);color:var(--text);position:relative;cursor:pointer;border:1px solid var(--border)}
+.icon-btn:hover{border-color:var(--brand2)}
+.badge{position:absolute;top:-.3rem;right:-.3rem;background:#e11d48;color:#fff;font-size:.6rem;font-weight:800;min-width:1.05rem;height:1.05rem;border-radius:999px;display:flex;align-items:center;justify-content:center;padding:0 .25rem}
+.chip{display:inline-flex;align-items:center;gap:.3rem;padding:.2rem .65rem;border-radius:999px;font-size:.62rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.c-orange{background:#ea580c;color:#fff}.c-amber{background:#d97706;color:#fff}.c-green{background:#059669;color:#fff}
+.c-blue{background:#dbeafe;color:#1e40af}.c-red{background:#fee2e2;color:#991b1b}.c-slate{background:#e2e8f0;color:#334155}.c-teal{background:#ccfbf1;color:#115e59}.c-yellow{background:#fef3c7;color:#92400e}.c-purple{background:#ede9fe;color:#5b21b6}
+html.dark .c-blue{background:#1e3a8a;color:#bfdbfe}html.dark .c-red{background:#7f1d1d;color:#fecaca}html.dark .c-slate{background:#334155;color:#e2e8f0}html.dark .c-teal{background:#134e4a;color:#99f6e4}html.dark .c-yellow{background:#78350f;color:#fde68a}html.dark .c-purple{background:#4c1d95;color:#ddd6fe}
+.card{border-radius:1.5rem;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .25s,transform .25s}
+.card:hover{box-shadow:0 20px 40px -20px rgba(0,0,0,.35);transform:translateY(-2px)}
+.img-wrap{position:relative;height:14rem;overflow:hidden;cursor:pointer;background:var(--surface2)}
+.img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .img-wrap img{transform:scale(1.05)}
+.price-tag{position:absolute;bottom:.75rem;right:.75rem;background:rgba(15,23,42,.88);color:#fff;font-weight:800;font-size:.75rem;padding:.35rem .8rem;border-radius:.8rem}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.modal-back{position:fixed;inset:0;z-index:60;background:rgba(15,23,42,.62);backdrop-filter:blur(6px);display:flex;align-items:flex-start;justify-content:center;padding:1rem;overflow-y:auto}
+.modal-box{position:relative;background:var(--surface);color:var(--text);border-radius:1.5rem;width:100%;margin:2rem 0;padding:1.5rem;border:1px solid var(--border)}
+.modal-x{position:absolute;top:1rem;right:1rem;width:2.1rem;height:2.1rem;border-radius:.8rem;background:var(--surface2);color:var(--muted);cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}
+.avatar{display:inline-flex;align-items:center;justify-content:center;border-radius:.9rem;color:#fff;font-weight:800;flex-shrink:0}
+.scrollbar-none{scrollbar-width:none}.scrollbar-none::-webkit-scrollbar{display:none}
+.cat-btn{padding:.6rem 1.1rem;border-radius:1rem;font-size:.8rem;font-weight:700;white-space:nowrap;background:var(--surface);border:1px solid var(--border);color:var(--muted)}
+.cat-btn.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+.cal-d{display:flex;align-items:center;justify-content:center;height:2rem;border-radius:.6rem;font-size:.72rem;font-weight:700}
+.cal-f{background:#d1fae5;color:#065f46}.cal-b{background:#fecaca;color:#991b1b;text-decoration:line-through}.cal-p{color:var(--muted);opacity:.5}
+html.dark .cal-f{background:#064e3b;color:#a7f3d0}html.dark .cal-b{background:#7f1d1d;color:#fecaca}
+.bubble{max-width:80%;padding:.55rem .85rem;border-radius:1rem;font-size:.82rem;line-height:1.4;white-space:pre-wrap;word-break:break-word}
+.bub-me{background:var(--brand);color:#fff;margin-left:auto;border-bottom-right-radius:.3rem}
+.bub-them{background:var(--surface2);border-bottom-left-radius:.3rem}
+.line-clamp-1{display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+#toast{position:fixed;bottom:1.25rem;right:1.25rem;z-index:80;max-width:22rem;transform:translateY(140%);opacity:0;transition:all .3s}
+#toast.show{transform:none;opacity:1}
+.hero{background:linear-gradient(135deg,#0f172a,#1e1b4b 55%,#431407);color:#fff;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;opacity:.15;background:radial-gradient(#f97316 1px,transparent 1px);background-size:24px 24px}
+.star-on{color:#f59e0b}.star-off{color:var(--border)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="banner"></div>
+<header class="hdr" id="hdr"></header>
+<main id="view" class="flex-grow w-full"></main>
+<footer id="ftr" class="surface border-x-0 border-b-0 mt-12"></footer>
+<div id="modalRoot"></div>
+<div id="toast" class="surface rounded-2xl shadow-2xl px-4 py-3 flex items-center gap-3" role="status" aria-live="polite">
+  <span id="toastIcon"></span><p id="toastMsg" class="text-sm font-semibold"></p>
+</div>
+
+<script>
+'use strict';
+/* =====================================================================
+   EXCHANGER - single-file prototype
+   DATA LAYER: everything goes through DB.get / DB.set. To go live, replace
+   those two functions (and loadState/save) with Firebase / Supabase calls.
+   NOTE: client-side checks are for UX only; real security (ownership,
+   password verification, email OTP) must be enforced by your backend.
+   ===================================================================== */
+const CONFIG={
+  EMAIL_SUFFIXES:['.ac.in','.edu.in','.edu'],   // accepted college email domains
+  OTP_TTL:10*60*1000, SESSION_DAYS:7, PAGE_SIZE:12, MAX_PHOTOS:4, MAX_LISTINGS_PER_USER:15
+};
+const COLLEGES=['IIT Bombay','IIT Delhi','IIT Kanpur','IIT Madras','IIT Kharagpur','IIT BHU','NIT Trichy','NIT Warangal','BITS Pilani','VIT Vellore','IIIT Hyderabad','Delhi University','DTU Delhi','Jadavpur University','Anna University','SPPU Pune','Other'];
+const LOCATIONS=['Main Gate','Main Canteen','Library','Boys Hostel Gate','Girls Hostel Gate','Admin Block','Sports Complex','Other'];
+const BRANCHES=['CSE','IT','ECE','EEE','Mechanical','Civil','Chemical','Biotechnology','Other'];
+const YEARS=['1st Year','2nd Year','3rd Year','4th Year','5th Year','Postgraduate','Alumni'];
+const CATS=[{id:'Books',icon:'fa-book'},{id:'Lab Equipment',icon:'fa-flask'},{id:'Electronics',icon:'fa-calculator'},{id:'Cycles',icon:'fa-bicycle'},{id:'Others',icon:'fa-box-open'}];
+const REPORT_REASONS=['Spam or fake listing','Prohibited item','Scam / suspicious behaviour','Misleading price or details','Harassment','Other'];
+
+/* ---------- i18n ---------- */
+const I18N={
+en:{home:'Home',search_ph:'Search textbooks, cycles, lab coats, calculators...',list_item:'List an Item',sign_in:'Sign In',sign_up:'Sign Up',sign_out:'Sign Out',my_listings:'My Listings',saved:'Saved Items',requests:'Requests',messages:'Messages',notifications:'Notifications',profile:'My Profile',admin:'Moderation',all_items:'All Items',cat_Books:'Books & Notes',cat_Lab_Equipment:'Lab Equipment & Aprons',cat_Electronics:'Electronics & Calculators',cat_Cycles:'Cycles & Mobility',cat_Others:'Others',type:'Type',all_modes:'All Modes',Rent:'For Rent',Exchange:'For Exchange',Sale:'For Sale',sort:'Sort',newest:'Newest First',price_low:'Price: Low to High (₹)',price_high:'Price: High to Low (₹)',hero_1:'Exchange, Rent, or Buy from',hero_2:'Seniors & Batchmates',hero_sub:'Save money on semester books, lab coats, calculators and hostel cycles. Verified-email members, zero commission.',stat_active:'Active Listings',stat_students:'Members',stat_deals:'Completed Deals',stat_fee:'Platform Commission',load_more:'Load more',no_items:'No campus items found',no_items_sub:'Try clearing filters or list something yourself.',reset:'Reset Filters',campus:'Campus',all_colleges:'All colleges',my_college:'My college',location:'Pickup spot',semester:'Semester',branch:'Branch',max_price:'Max ₹',hide_sold:'Hide sold/closed',any:'Any',items_found:'items',view_deal:'View & Deal',st_available:'Available',st_reserved:'Reserved',st_rented:'Rented out',st_sold:'Sold',st_exchanged:'Exchanged',st_paused:'Paused',rs_pending:'Pending',rs_accepted:'Accepted',rs_active:'In use',rs_completed:'Completed',rs_declined:'Declined',rs_cancelled:'Cancelled',login_needed:'Please sign in with your college account to continue.',dark:'Dark mode',light:'Light mode',verified:'Verified student',safety:'Campus Safety',faq:'FAQ',terms:'Terms',privacy:'Privacy',more_filters:'Filters'},
+hi:{home:'होम',search_ph:'किताबें, साइकिल, लैब कोट, कैलकुलेटर खोजें...',list_item:'सामान डालें',sign_in:'साइन इन',sign_up:'साइन अप',sign_out:'साइन आउट',my_listings:'मेरी लिस्टिंग',saved:'सेव किए गए',requests:'अनुरोध',messages:'संदेश',notifications:'सूचनाएँ',profile:'मेरी प्रोफ़ाइल',admin:'मॉडरेशन',all_items:'सभी सामान',cat_Books:'किताबें और नोट्स',cat_Lab_Equipment:'लैब सामान और एप्रन',cat_Electronics:'इलेक्ट्रॉनिक्स और कैलकुलेटर',cat_Cycles:'साइकिल और वाहन',cat_Others:'अन्य',type:'प्रकार',all_modes:'सभी',Rent:'किराये पर',Exchange:'अदला-बदली',Sale:'बिक्री',sort:'क्रम',newest:'नए पहले',price_low:'कीमत: कम से ज़्यादा (₹)',price_high:'कीमत: ज़्यादा से कम (₹)',hero_1:'अदला-बदली, किराया या खरीद',hero_2:'सीनियर्स और बैचमेट्स से',hero_sub:'सेमेस्टर की किताबें, लैब कोट, कैलकुलेटर और हॉस्टल साइकिल पर पैसे बचाएँ। ईमेल-वेरिफाइड सदस्य, कोई कमीशन नहीं।',stat_active:'सक्रिय लिस्टिंग',stat_students:'सदस्य',stat_deals:'पूरी हुई डील',stat_fee:'प्लेटफ़ॉर्म कमीशन',load_more:'और दिखाएँ',no_items:'कोई सामान नहीं मिला',no_items_sub:'फ़िल्टर हटाएँ या खुद कुछ लिस्ट करें।',reset:'फ़िल्टर रीसेट',campus:'कैंपस',all_colleges:'सभी कॉलेज',my_college:'मेरा कॉलेज',location:'मिलने की जगह',semester:'सेमेस्टर',branch:'ब्रांच',max_price:'अधिकतम ₹',hide_sold:'बिके हुए छिपाएँ',any:'कोई भी',items_found:'सामान',view_deal:'देखें और डील करें',st_available:'उपलब्ध',st_reserved:'रिज़र्व',st_rented:'किराये पर दिया',st_sold:'बिक गया',st_exchanged:'बदल लिया',st_paused:'रोका गया',rs_pending:'लंबित',rs_accepted:'स्वीकृत',rs_active:'उपयोग में',rs_completed:'पूरा',rs_declined:'अस्वीकृत',rs_cancelled:'रद्द',login_needed:'आगे बढ़ने के लिए अपने कॉलेज खाते से साइन इन करें।',dark:'डार्क मोड',light:'लाइट मोड',verified:'वेरिफाइड छात्र',safety:'कैंपस सुरक्षा',faq:'सवाल-जवाब',terms:'शर्तें',privacy:'गोपनीयता',more_filters:'फ़िल्टर'}
+};
+let lang=localStorage.getItem('exch2_lang')||'en';
+const t=k=>{const L=I18N[lang]||I18N.en;return L[k]??I18N.en[k]??k};
+
+/* ---------- helpers ---------- */
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+const money=n=>'₹'+Number(n||0).toLocaleString('en-IN');
+const todayStr=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+const daysBetween=(a,b)=>Math.round((Date.parse(b)-Date.parse(a))/864e5);
+const fmtDay=s=>new Date(s+'T00:00:00Z').toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'});
+const fmtDate=ts=>new Date(ts).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+const fmtTime=ts=>new Date(ts).toLocaleString('en-IN',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+const opts=(arr,sel,lf)=>arr.map(a=>`<option value="${esc(a)}" ${String(a)===String(sel)?'selected':''}>${esc(lf?lf(a):a)}</option>`).join('');
+const catKey=c=>'cat_'+c.replace(/ /g,'_');
+const initials=n=>String(n||'?').trim().split(/\s+/).slice(0,2).map(w=>w[0]||'').join('').toUpperCase()||'?';
+function hueOf(s){let h=0;for(const c of String(s))h=(h*31+c.charCodeAt(0))%360;return h}
+const avatar=(u,sz=40)=>`<span class="avatar" style="width:${sz}px;height:${sz}px;font-size:${Math.round(sz*.38)}px;background:hsl(${hueOf(u?u.id:'x')} 62% 42%)">${esc(initials(u?u.name:'?'))}</span>`;
+function placeholderImg(cat){
+  const g={Books:['#f97316','#6366f1','📚'],'Lab Equipment':['#10b981','#0ea5e9','🥼'],Electronics:['#6366f1','#ec4899','🧮'],Cycles:['#f59e0b','#ef4444','🚲'],Others:['#64748b','#0f172a','📦']}[cat]||['#64748b','#0f172a','📦'];
+  const svg=`<svg xmlns='http://www.w3.org/2000/svg' width='600' height='450' viewBox='0 0 600 450'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${g[0]}'/><stop offset='1' stop-color='${g[1]}'/></linearGradient></defs><rect width='600' height='450' fill='url(#g)'/><text x='300' y='270' font-size='150' text-anchor='middle'>${g[2]}</text></svg>`;
+  return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+}
+const PH=placeholderImg('Others');
+let toastTimer;
+function toast(msg,kind='success'){
+  $('toastMsg').textContent=msg;
+  $('toastIcon').innerHTML=kind==='error'?'<i class="fa-solid fa-circle-exclamation text-rose-500"></i>':kind==='info'?'<i class="fa-solid fa-circle-info text-sky-500"></i>':'<i class="fa-solid fa-circle-check text-emerald-500"></i>';
+  $('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),3800);
+}
+
+/* ---------- DB layer (Cloud Server / LocalStorage Sync) ---------- */
+const DB={
+  get(k,d){try{const v=localStorage.getItem('exch2_'+k);return v?JSON.parse(v):d}catch{return d}},
+  set(k,v){try{localStorage.setItem('exch2_'+k,JSON.stringify(v));return true}catch(e){return false}},
+  del(k){try{localStorage.removeItem('exch2_'+k)}catch{}}
+};
+let S={};
+const KEYS=['users','listings','requests','messages','reviews','reports','notifs','saved'];
+function loadState(){KEYS.forEach(k=>S[k]=DB.get(k,k==='saved'?{}:[]));S.session=DB.get('session',null)}
+function save(...ks){
+  let ok=true;
+  ks.forEach(k=>{if(!DB.set(k,S[k]))ok=false});
+  if(window.location.protocol.startsWith('http')){
+    const payload={keys:ks,data:{}};
+    ks.forEach(k=>{payload.data[k]=S[k]});
+    fetch('/api/save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(()=>{});
+  }
+  return ok;
+}
+async function syncFromServer(){
+  if(!window.location.protocol.startsWith('http'))return;
+  try{
+    const res=await fetch('/api/state');
+    if(!res.ok)return;
+    const data=await res.json();
+    let changed=false;
+    KEYS.forEach(k=>{
+      if(data[k]&&JSON.stringify(data[k])!==JSON.stringify(S[k])){
+        S[k]=data[k];DB.set(k,data[k]);changed=true;
+      }
+    });
+    if(changed){
+      renderChrome();
+      if(state.view==='messages'){const v=$('msgInput')?$('msgInput').value:'';renderMessages();if(v&&$('msgInput'))$('msgInput').value=v}
+      else if(state.view==='home'){renderGrid()}else{renderView()}
+    }
+  }catch(e){}
+}
+const state={view:'home',thread:null,detailImgs:[],cal:null,formImages:[],rv:0,pending:null};
+const F={q:'',cat:'All',type:'all',sort:'newest',scope:'all',location:'all',sem:'all',branch:'all',maxPrice:'',hideSold:true,page:1};
+
+/* ---------- lookups ---------- */
+const userById=id=>S.users.find(u=>u.id===id);
+const listingById=id=>S.listings.find(l=>l.id===id);
+function currentUser(){
+  const s=S.session;if(!s||s.exp<Date.now())return null;
+  const u=userById(s.userId);if(!u||u.banned)return null;return u;
+}
+const isBlockedPair=(me,oid)=>{if(!me)return false;const o=userById(oid);return (me.blocked||[]).includes(oid)||!!(o&&(o.blocked||[]).includes(me.id))};
+function ratingOf(uid2){const rs=S.reviews.filter(r=>r.targetId===uid2);const n=rs.length;return{n,avg:n?rs.reduce((a,r)=>a+r.rating,0)/n:0}}
+function starsHtml(avg){let h='';for(let i=1;i<=5;i++)h+=`<i class="fa-solid fa-star ${avg>=i-.25?'star-on':'star-off'} text-[11px]"></i>`;return h}
+function ratingHtml(uid2){const r=ratingOf(uid2);return r.n?`<span class="inline-flex items-center gap-1">${starsHtml(r.avg)}<span class="text-[11px] muted font-semibold">${r.avg.toFixed(1)} (${r.n})</span></span>`:'<span class="text-[11px] muted font-semibold">New seller</span>'}
+function trustChips(u){
+  if(!u)return '';const r=ratingOf(u.id);let h='';
+  if(u.verified)h+=`<span class="chip c-teal"><i class="fa-solid fa-circle-check"></i>${esc(t('verified'))}</span>`;
+  else if(u.emailVerified)h+=`<span class="chip c-blue"><i class="fa-solid fa-envelope-circle-check"></i>Email verified</span>`;
+  if(r.n>=3&&r.avg>=4.5)h+=`<span class="chip c-yellow"><i class="fa-solid fa-trophy"></i>Top rated</span>`;
+  return h;
+}
+
+/* ---------- seed (sample listings, clearly tagged) ---------- */
+function seedIfEmpty(){
+  const now=Date.now();
+  const mk=(id,name,college,branch,year)=>({id,name,email:id+'@sample.invalid',college,branch,year,verified:true,role:'user',demo:true,createdAt:now,blocked:[],phone:'9876543210',showWhatsapp:true,upi:'sample@okaxis',salt:'ZGVtb3NhbHQxMjM0NTY3OA==',passHash:'s2wV5TvZgrNJl00b4wfJSUynJAEx9W0xKdFC0oyd8Yw='});
+  if(!DB.get('seeded',false)){
+    S.users=[mk('u_demo1','Raghav Varma','IIT Kanpur','CSE','4th Year'),mk('u_demo2','Priya Menon','NIT Trichy','ECE','3rd Year'),mk('u_demo3','Aditya Roy','VIT Vellore','Mechanical','4th Year'),mk('u_demo4','Sneha Reddy','IIIT Hyderabad','Biotechnology','3rd Year')];
+    const L=(i,o)=>Object.assign({id:'l_demo'+i,images:[],negotiable:false,deposit:0,rentUnit:'week',exchangeWant:'',semester:'Any',branch:'Any',edition:'',status:'available',demo:true,createdAt:now-i*3600e3},o);
+    S.listings=[
+      L(1,{sellerId:'u_demo1',college:'IIT Kanpur',title:'Engineering Mathematics (Vol 1 & 2) by H.K. Dass',category:'Books',type:'Rent',price:150,rentUnit:'week',deposit:200,condition:'Like New',semester:'1',branch:'Any',edition:'Latest edition',location:'Boys Hostel Gate',desc:'Essential for 1st and 2nd sem exams. Clean pages with important derivations highlighted.'}),
+      L(2,{sellerId:'u_demo2',college:'NIT Trichy',title:'Casio fx-991ES Plus Scientific Calculator',category:'Electronics',type:'Sale',price:650,negotiable:true,condition:'Like New',branch:'Any',edition:'fx-991ES Plus',location:'Library',desc:'Solar and battery powered. Fully working for matrix, complex numbers and integration.'}),
+      L(3,{sellerId:'u_demo3',college:'VIT Vellore',title:'BSA Hercules Campus Bicycle with Lock & Basket',category:'Cycles',type:'Rent',price:250,rentUnit:'month',deposit:500,condition:'Good',location:'Main Gate',desc:'Smooth ride to reach morning lectures on time. Heavy-duty chain lock included.'}),
+      L(4,{sellerId:'u_demo4',college:'IIIT Hyderabad',title:'Chemistry Lab Coat (Size 40) + Glass Beaker Set',category:'Lab Equipment',type:'Exchange',condition:'Like New',semester:'2',branch:'Biotechnology',location:'Main Canteen',exchangeWant:'Physics lab manual or notes',desc:'Used for one semester only. Happy to swap for Physics manual notes.'}),
+      L(5,{sellerId:'u_demo1',college:'IIT Kanpur',title:'Mini Drafter with Engineering Drawing Kit',category:'Lab Equipment',type:'Sale',price:300,negotiable:true,condition:'Good',semester:'1',branch:'Any',location:'Library',desc:'Complete set: drafter, set squares, scales. Great for first-year drawing.'}),
+      L(6,{sellerId:'u_demo2',college:'NIT Trichy',title:'Digital Signal Processing by Proakis (4th Ed.)',category:'Books',type:'Rent',price:20,rentUnit:'day',deposit:150,condition:'Good',semester:'5',branch:'ECE',edition:'4th Edition',location:'Admin Block',desc:'Margins have pencil notes. Good for exam week rental.'})
+    ];
+    S.requests=[];S.messages=[];S.reviews=[];S.reports=[];S.notifs=[];S.saved={};
+    save(...KEYS);DB.set('seeded',true);
+  }else{
+    // Backfill credentials for existing seeded demo users if missing
+    let uCh=false;
+    S.users.forEach(u=>{
+      if(u.demo&&!u.passHash){
+        u.salt='ZGVtb3NhbHQxMjM0NTY3OA==';
+        u.passHash='s2wV5TvZgrNJl00b4wfJSUynJAEx9W0xKdFC0oyd8Yw=';
+        u.phone=u.phone||'9876543210';
+        u.upi=u.upi||'sample@okaxis';
+        u.showWhatsapp=true;
+        uCh=true;
+      }
+    });
+    if(uCh)save('users');
+  }
+}
+
+/* ---------- crypto / auth ---------- */
+const b64=a=>btoa(String.fromCharCode(...a));
+const unb64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function hashPw(pw,salt){
+  if(window.crypto&&crypto.subtle){
+    const key=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveBits']);
+    const bits=await crypto.subtle.deriveBits({name:'PBKDF2',salt:unb64(salt),iterations:150000,hash:'SHA-256'},key,256);
+    return b64(new Uint8Array(bits));
+  }
+  let h=5381;const s=salt+pw;for(let i=0;i<20000;i++)for(let j=0;j<s.length;j++)h=((h<<5)+h+s.charCodeAt(j)+i)|0;
+  return 'fb'+(h>>>0).toString(16);
+}
+const newSalt=()=>b64(crypto.getRandomValues(new Uint8Array(16)));
+const newOtp=()=>String(crypto.getRandomValues(new Uint32Array(1))[0]%1000000).padStart(6,'0');
+const validEmail=e=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+const isCollegeEmail=e=>{const d=e.split('@')[1].toLowerCase();return CONFIG.EMAIL_SUFFIXES.some(s=>d.endsWith(s))};
+const strongPw=p=>p.length>=8&&/[A-Za-z]/.test(p)&&/\d/.test(p);
+const loginFails={};
+function startSession(u){S.session={userId:u.id,exp:Date.now()+CONFIG.SESSION_DAYS*864e5};DB.set('session',S.session)}
+function requireUser(msg){
+  const u=currentUser();
+  if(!u){openAuth('signin',msg||t('login_needed'));return null}
+  return u;
+}
+function collegeField(p,val){
+  const known=COLLEGES.includes(val);const selv=val===''?'':known?val:'Other';
+  return `<select id="${p}_col" class="inp" onchange="$('${p}_oth').classList.toggle('hidden',this.value!=='Other')"><option value="">Select your college</option>${opts(COLLEGES,selv)}</select><input id="${p}_oth" class="inp mt-2 ${selv==='Other'?'':'hidden'}" maxlength="60" placeholder="College name" value="${selv==='Other'&&!known?esc(val):''}">`;
+}
+function readCollege(p){const s=$(p+'_col').value;if(!s)return '';return s==='Other'?($(p+'_oth').value.trim()||'Other'):s}
+
+/* ---------- modal system ---------- */
+function openModal(html,o={}){
+  const el=document.createElement('div');el.className='modal-back';
+  el.innerHTML=`<div class="modal-box ${o.wide?'max-w-3xl':'max-w-lg'}" role="dialog" aria-modal="true"><button class="modal-x" onclick="closeModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>${html}</div>`;
+  el.addEventListener('mousedown',e=>{if(e.target===el)closeModal()});
+  $('modalRoot').appendChild(el);document.body.classList.add('overflow-hidden');return el;
+}
+function closeModal(){const r=$('modalRoot');if(r.lastChild)r.removeChild(r.lastChild);if(!r.children.length)document.body.classList.remove('overflow-hidden')}
+function closeAllModals(){$('modalRoot').innerHTML='';document.body.classList.remove('overflow-hidden')}
+
+/* ---------- auth UI ---------- */
+function openAuth(tab='signin',msg=''){
+  closeAllModals();
+  openModal(`<div class="text-center mb-5"><div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-orange-600 via-amber-500 to-indigo-600 flex items-center justify-center text-white mx-auto mb-3"><i class="fa-solid fa-rotate text-xl"></i></div><h2 class="text-xl font-extrabold">Welcome to Exchanger</h2><p class="text-xs muted font-semibold mt-1">For college students and campus alumni</p></div>
+  ${msg?`<p class="text-xs font-semibold text-center s2 rounded-xl p-2.5 mb-4">${esc(msg)}</p>`:''}
+  <div id="authBox"></div>`);
+  renderAuth(tab);
+}
+function authTabs(tab){return `<div class="flex s2 p-1.5 rounded-2xl mb-5"><button class="flex-1 py-2.5 rounded-xl text-xs font-extrabold ${tab==='signup'?'surface text-orange-600':'muted'}" onclick="renderAuth('signup')">${t('sign_up')}</button><button class="flex-1 py-2.5 rounded-xl text-xs font-extrabold ${tab==='signin'?'surface text-orange-600':'muted'}" onclick="renderAuth('signin')">${t('sign_in')}</button></div>`}
+function renderAuth(tab){
+  const box=$('authBox');if(!box)return;
+  if(tab==='signup'){
+    box.innerHTML=authTabs('signup')+`<form onsubmit="startSignup(event)" class="space-y-3.5">
+      <div><label class="lbl">Full name</label><input id="su_name" class="inp" maxlength="50" placeholder="e.g. Aarav Sharma" required></div>
+      <div><label class="lbl">Email</label><input id="su_email" type="email" class="inp" placeholder="you@gmail.com or you@college.ac.in" required><p class="text-[11px] muted mt-1">Any email works. Use your college email (.ac.in / .edu.in / .edu) to earn the <b>Verified student</b> badge.</p></div>
+      <div><label class="lbl">Password</label><input id="su_pw" type="password" class="inp" minlength="8" placeholder="Min 8 characters, letters and a number" autocomplete="new-password" required></div>
+      <div><label class="lbl">College</label>${collegeField('su','')}</div>
+      <div class="grid grid-cols-2 gap-3"><div><label class="lbl">Branch</label><select id="su_branch" class="inp">${opts(BRANCHES,'CSE')}</select></div><div><label class="lbl">Year</label><select id="su_year" class="inp">${opts(YEARS,'1st Year')}</select></div></div>
+      <label class="flex items-start gap-2 text-[11px] muted"><input type="checkbox" id="su_terms" class="mt-0.5" required> <span>I agree to the <a href="javascript:void 0" class="text-orange-600 font-bold" onclick="openInfo('terms')">Terms</a> and <a href="javascript:void 0" class="text-orange-600 font-bold" onclick="openInfo('privacy')">Privacy Policy</a>.</span></label>
+      <button class="btn btn-primary w-full py-3">Send verification code</button></form>`;
+  }else if(tab==='signin'){
+    box.innerHTML=authTabs('signin')+`
+      <div class="s2 rounded-2xl p-3 mb-4 text-xs border border-dashed border-orange-400">
+        <p class="font-bold mb-1.5 text-orange-600"><i class="fa-solid fa-flask mr-1"></i>Quick Test Login (Prototype):</p>
+        <div class="flex flex-wrap gap-1.5">
+          <button type="button" class="chip c-orange cursor-pointer hover:opacity-90" onclick="quickLogin('u_demo1')">Raghav (Seller • IITK)</button>
+          <button type="button" class="chip c-blue cursor-pointer hover:opacity-90" onclick="quickLogin('u_demo2')">Priya (Seller • NITT)</button>
+          <button type="button" class="chip c-teal cursor-pointer hover:opacity-90" onclick="quickLogin('u_demo3')">Aditya (Seller • VIT)</button>
+        </div>
+      </div>
+      <form onsubmit="doSignin(event)" class="space-y-3.5">
+      <div><label class="lbl">Email</label><input id="si_email" type="email" class="inp" placeholder="you@example.com" autocomplete="username" required></div>
+      <div><label class="lbl">Password</label><input id="si_pw" type="password" class="inp" autocomplete="current-password" required></div>
+      <button class="btn btn-dark w-full py-3">Sign in</button>
+      <button type="button" class="text-xs font-bold text-orange-600 w-full" onclick="renderAuth('forgot')">Forgot password?</button></form>
+      <div class="flex items-center my-4"><div class="flex-1 h-px" style="background:var(--border)"></div><span class="px-3 text-[10px] font-bold muted uppercase">or</span><div class="flex-1 h-px" style="background:var(--border)"></div></div>
+      <button class="btn btn-soft w-full" onclick="closeAllModals()"><i class="fa-solid fa-eye"></i> Keep browsing as guest</button>`;
+  }else if(tab==='forgot'){
+    box.innerHTML=`<form onsubmit="startReset(event)" class="space-y-3.5"><p class="text-sm font-bold">Reset your password</p><div><label class="lbl">Email</label><input id="fp_email" type="email" class="inp" required></div><button class="btn btn-primary w-full">Send reset code</button><button type="button" class="text-xs font-bold muted w-full" onclick="renderAuth('signin')">Back to sign in</button></form>`;
+  }
+}
+function otpBanner(otp){return `<div class="rounded-xl border border-dashed border-amber-400 bg-amber-50 text-amber-900 text-xs p-3 mb-4"><b>Prototype mode:</b> no email server is connected, so the code is shown here. In production it is emailed to the student. Your code: <b class="text-base tracking-widest">${otp}</b></div>`}
+async function startSignup(e){
+  e.preventDefault();
+  const name=$('su_name').value.trim(),email=$('su_email').value.trim().toLowerCase(),pw=$('su_pw').value,college=readCollege('su');
+  if(name.length<2)return toast('Enter your full name','error');
+  if(!validEmail(email))return toast('Enter a valid email','error');
+  if(S.users.some(u=>u.email===email))return toast('This email is already registered. Please sign in.','error');
+  if(!strongPw(pw))return toast('Password needs 8+ characters with letters and a number','error');
+  if(!college)return toast('Select your college','error');
+  state.pending={kind:'signup',name,email,pw,college,branch:$('su_branch').value,year:$('su_year').value,otp:newOtp(),exp:Date.now()+CONFIG.OTP_TTL,tries:0};
+  showOtpStep('Verify your email');
+}
+function showOtpStep(title){
+  const p=state.pending;
+  $('authBox').innerHTML=`${otpBanner(p.otp)}<form onsubmit="verifyOtp(event)" class="space-y-3.5"><p class="text-sm font-bold">${esc(title)}</p><p class="text-xs muted">Enter the 6-digit code for <b>${esc(p.email)}</b>.</p>
+  <input id="otp_in" class="inp text-center text-lg tracking-[.5em] font-extrabold" inputmode="numeric" maxlength="6" placeholder="••••••" required>
+  ${p.kind==='reset'?'<div><label class="lbl">New password</label><input id="otp_pw" type="password" class="inp" minlength="8" autocomplete="new-password" required></div>':''}
+  <button class="btn btn-primary w-full">Verify</button></form>`;
+}
+async function verifyOtp(e){
+  e.preventDefault();const p=state.pending;if(!p)return;
+  if(Date.now()>p.exp){state.pending=null;return toast('Code expired. Start again.','error')}
+  if(++p.tries>5){state.pending=null;return toast('Too many wrong attempts. Start again.','error')}
+  if($('otp_in').value.trim()!==p.otp)return toast('Incorrect code','error');
+  if(p.kind==='signup'){
+    const salt=newSalt();const hash=await hashPw(p.pw,salt);
+    const first=!S.users.some(u=>!u.demo);
+    const u={id:'u_'+uid(),name:p.name,email:p.email,salt,passHash:hash,college:p.college,branch:p.branch,year:p.year,verified:isCollegeEmail(p.email),emailVerified:true,role:first?'admin':'user',createdAt:Date.now(),blocked:[],phone:'',showWhatsapp:false,upi:''};
+    S.users.push(u);save('users');startSession(u);state.pending=null;closeAllModals();renderChrome();route();
+    toast(`Welcome aboard, ${u.name}!${first?' You are the first user, so you have moderator access.':''}`);
+  }else{
+    const npw=$('otp_pw').value;if(!strongPw(npw))return toast('Password needs 8+ characters with letters and a number','error');
+    const u=userById(p.userId);if(!u)return;
+    u.salt=newSalt();u.passHash=await hashPw(npw,u.salt);save('users');state.pending=null;
+    toast('Password updated. Please sign in.');renderAuth('signin');
+  }
+}
+function startReset(e){
+  e.preventDefault();const email=$('fp_email').value.trim().toLowerCase();const u=S.users.find(x=>x.email===email&&!x.demo);
+  if(!u)return toast('No account found with that email','error');
+  state.pending={kind:'reset',userId:u.id,email,otp:newOtp(),exp:Date.now()+CONFIG.OTP_TTL,tries:0};showOtpStep('Reset password');
+}
+function quickLogin(uid){
+  const u=userById(uid);if(!u)return;
+  startSession(u);closeAllModals();renderChrome();route();toast(`Signed in as ${u.name}`);
+}
+async function doSignin(e){
+  e.preventDefault();
+  const email=$('si_email').value.trim().toLowerCase(),pw=$('si_pw').value;
+  const lf=loginFails[email];
+  if(lf&&lf.until>Date.now())return toast(`Too many attempts. Try again in ${Math.ceil((lf.until-Date.now())/1000)}s`,'error');
+  const u=S.users.find(x=>x.email===email);
+  const ok=u&&(u.demo&&pw==='demo1234'||(u.passHash&&await hashPw(pw,u.salt)===u.passHash));
+  if(!ok){const f=loginFails[email]||(loginFails[email]={n:0,until:0});if(++f.n>=5){f.until=Date.now()+30000;f.n=0}return toast('Incorrect email or password','error')}
+  if(u.banned)return toast('This account has been suspended by moderators.','error');
+  delete loginFails[email];startSession(u);closeAllModals();renderChrome();route();toast(`Signed in as ${u.name}`);
+}
+function signOut(){S.session=null;DB.del('session');state.thread=null;renderChrome();location.hash='#/home';route();toast('Signed out','info')}
+
+/* ---------- notifications ---------- */
+function notify(userId,text,link){
+  S.notifs.unshift({id:uid(),userId,text,link:link||'',ts:Date.now(),read:false});
+  S.notifs=S.notifs.slice(0,300);
+  const me=currentUser();
+  if(me&&me.id===userId&&document.hidden&&'Notification' in window&&Notification.permission==='granted'){try{new Notification('Exchanger',{body:text,icon:'icon.svg'})}catch{}}
+}
+function badgeCounts(me){
+  if(!me)return{req:0,msg:0,not:0};
+  return{
+    req:S.requests.filter(r=>(r.sellerId===me.id&&r.status==='pending')||(r.buyerId===me.id&&r.status==='accepted'&&!r.seen)).length,
+    msg:S.messages.filter(m=>m.to===me.id&&!m.read).length,
+    not:S.notifs.filter(n=>n.userId===me.id&&!n.read).length
+  };
+}
+function runChecks(){
+  const today=todayStr();let ch=false;
+  S.requests.forEach(r=>{
+    if(r.type!=='Rent'||!['accepted','active'].includes(r.status))return;
+    const l=listingById(r.listingId);const title=l?l.title:'item';const d=daysBetween(today,r.end);
+    if(r.status==='accepted'&&r.end<today&&!r.expN){
+      r.expN=true;r.status='cancelled';ch=true;
+      if(l)syncListing(l);
+      [r.buyerId,r.sellerId].forEach(x=>notify(x,`Booking expired: Rental for "${title}" was never handed over and has been cancelled.`,'requests'));
+      return;
+    }
+    if(d===1&&!r.rem1){r.rem1=true;ch=true;[r.buyerId,r.sellerId].forEach(x=>notify(x,`Return reminder: "${title}" is due tomorrow.`,'requests'))}
+    if(d===0&&!r.rem0){r.rem0=true;ch=true;[r.buyerId,r.sellerId].forEach(x=>notify(x,`"${title}" is due back today.`,'requests'))}
+    if(d<0&&r.status==='active'&&!r.overN){r.overN=true;ch=true;[r.buyerId,r.sellerId].forEach(x=>notify(x,`OVERDUE: "${title}" was due on ${fmtDay(r.end)}.`,'requests'))}
+  });
+  if(ch)save('requests','listings','notifs');
+}
+const isOverdue=r=>r.type==='Rent'&&r.status==='active'&&r.end<todayStr();
+
+/* ---------- chrome (header/footer/banner) ---------- */
+function applyTheme(){document.documentElement.classList.toggle('dark',localStorage.getItem('exch2_theme')==='dark')}
+function toggleTheme(){localStorage.setItem('exch2_theme',localStorage.getItem('exch2_theme')==='dark'?'light':'dark');applyTheme();renderChrome()}
+function toggleLang(){lang=lang==='en'?'hi':'en';localStorage.setItem('exch2_lang',lang);renderChrome();renderView()}
+function renderChrome(){
+  const me=currentUser();const n=badgeCounts(me);
+  const bdg=c=>c?`<span class="badge">${c>99?'99+':c}</span>`:'';
+  const dark=document.documentElement.classList.contains('dark');
+  $('hdr').innerHTML=`<div class="max-w-7xl mx-auto px-3 sm:px-6 h-16 flex items-center justify-between gap-2">
+    <a href="#/home" class="flex items-center gap-2.5 min-w-0" onclick="resetFilters(false)"><div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-orange-600 via-amber-500 to-indigo-600 flex items-center justify-center text-white shadow-lg"><i class="fa-solid fa-rotate"></i></div><div class="leading-tight"><span class="text-xl font-extrabold bg-gradient-to-r from-orange-600 to-indigo-500 bg-clip-text text-transparent">Exchanger</span><span class="hidden sm:block text-[9px] uppercase tracking-widest muted font-bold">Campus Peer-to-Peer</span></div></a>
+    <nav class="flex items-center gap-1.5 sm:gap-2">
+      <button class="icon-btn" onclick="toggleTheme()" aria-label="${dark?t('light'):t('dark')}" title="${dark?t('light'):t('dark')}"><i class="fa-solid ${dark?'fa-sun':'fa-moon'} text-sm"></i></button>
+      <button class="icon-btn text-[11px] font-extrabold" onclick="toggleLang()" aria-label="Language">${lang==='en'?'हिं':'EN'}</button>
+      ${me?`<a href="#/requests" class="icon-btn" aria-label="${t('requests')}" title="${t('requests')}"><i class="fa-solid fa-handshake text-sm"></i>${bdg(n.req)}</a>
+      <a href="#/messages" class="icon-btn" aria-label="${t('messages')}" title="${t('messages')}" onclick="state.thread=null"><i class="fa-solid fa-comments text-sm"></i>${bdg(n.msg)}</a>
+      <a href="#/notifications" class="icon-btn" aria-label="${t('notifications')}" title="${t('notifications')}"><i class="fa-solid fa-bell text-sm"></i>${bdg(n.not)}</a>
+      <button class="btn btn-primary btn-sm" onclick="openListingForm()"><i class="fa-solid fa-plus"></i><span class="hidden sm:inline">${t('list_item')}</span></button>
+      <div class="relative" id="userMenuWrap"><button class="rounded-2xl" onclick="$('userMenu').classList.toggle('hidden')" aria-label="Account menu">${avatar(me,38)}</button>
+        <div id="userMenu" class="hidden absolute right-0 mt-3 w-60 surface rounded-3xl shadow-2xl py-2 text-sm z-50">
+          <div class="px-5 py-2.5 border-b" style="border-color:var(--border)"><p class="font-bold truncate">${esc(me.name)}</p><p class="text-xs muted truncate">${esc(me.email)}</p><div class="mt-1.5 flex flex-wrap gap-1">${trustChips(me)}</div></div>
+          ${[['profile','profile','fa-user'],['mine','my_listings','fa-box-archive'],['saved','saved','fa-heart']].map(([h,k,i])=>`<a href="#/${h}" onclick="$('userMenu').classList.add('hidden')" class="flex items-center px-5 py-2.5 font-medium hover:text-orange-600"><i class="fa-solid ${i} w-6 muted"></i>${t(k)}</a>`).join('')}
+          ${me.role==='admin'?`<a href="#/admin" onclick="$('userMenu').classList.add('hidden')" class="flex items-center px-5 py-2.5 font-medium hover:text-orange-600"><i class="fa-solid fa-shield-halved w-6 muted"></i>${t('admin')}</a>`:''}
+          <div class="border-t my-1" style="border-color:var(--border)"></div>
+          <button onclick="signOut()" class="w-full text-left flex items-center px-5 py-2.5 text-rose-500 font-medium"><i class="fa-solid fa-right-from-bracket w-6"></i>${t('sign_out')}</button>
+        </div></div>`
+      :`<button class="btn btn-soft btn-sm" onclick="openAuth('signin')">${t('sign_in')}</button><button class="btn btn-primary btn-sm" onclick="openAuth('signup')">${t('sign_up')}</button>`}
+    </nav></div>`;
+  $('banner').innerHTML=DB.get('bannerOff',false)?'':`<div class="bg-emerald-100 text-emerald-900 text-[11px] font-semibold px-4 py-2 flex items-center justify-center gap-3 text-center"><span><i class="fa-solid fa-cloud-arrow-up mr-1 text-emerald-600"></i><b>Live Campus Cloud:</b> Real-time sync active across all connected students and devices.</span><button onclick="DB.set('bannerOff',true);renderChrome()" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button></div>`;
+  $('ftr').innerHTML=`<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs muted">
+    <div class="flex items-center gap-2"><span class="font-extrabold text-base" style="color:var(--text)">Exchanger</span><span>© 2026</span></div>
+    <p class="font-medium">Built for Indian college students and campus seniors.</p>
+    <div class="flex gap-5 font-bold">${['safety','faq','terms','privacy'].map(k=>`<a href="javascript:void 0" class="hover:text-orange-600" onclick="openInfo('${k}')">${t(k)}</a>`).join('')}</div></div>`;
+}
+document.addEventListener('click',e=>{const m=$('userMenu');if(m&&!m.classList.contains('hidden')&&!e.target.closest('#userMenuWrap'))m.classList.add('hidden')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+/* ---------- router ---------- */
+const AUTH_VIEWS=['mine','saved','requests','messages','notifications','profile','admin'];
+function route(){
+  const v=(location.hash||'#/home').replace('#/','').split('/')[0]||'home';const me=currentUser();
+  if(AUTH_VIEWS.includes(v)&&!me){state.view='home';renderView();openAuth('signin',t('login_needed'));return}
+  if(v==='admin'&&me.role!=='admin'){state.view='home';renderView();return}
+  state.view=(AUTH_VIEWS.includes(v)||v==='home')?v:'home';
+  renderView();window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+function go(v){if(location.hash==='#/'+v)route();else location.hash='#/'+v}
+function renderView(){
+  const me=currentUser();
+  if(AUTH_VIEWS.includes(state.view)&&!me){state.view='home';location.hash='#/home'}
+  if(state.view==='admin'&&(!me||me.role!=='admin')){state.view='home';location.hash='#/home'}
+  const m={home:renderHome,mine:renderMine,saved:renderSaved,requests:renderRequests,messages:renderMessages,notifications:renderNotifs,profile:renderProfile,admin:renderAdmin};
+  (m[state.view]||renderHome)();renderChrome();
+}
+const pageWrap=(title,sub,inner)=>`<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"><div class="mb-6"><h1 class="text-2xl font-extrabold">${title}</h1>${sub?`<p class="text-sm muted mt-1">${sub}</p>`:''}</div>${inner}</div>`;
+const emptyBox=(icon,title,sub)=>`<div class="text-center py-20"><div class="w-16 h-16 rounded-3xl s2 flex items-center justify-center mx-auto mb-4 text-2xl text-orange-500"><i class="fa-solid ${icon}"></i></div><h3 class="text-lg font-bold">${title}</h3><p class="muted text-sm mt-1 max-w-sm mx-auto">${sub||''}</p></div>`;
+
+/* ---------- listings: helpers ---------- */
+const imgOf=l=>(l.images&&l.images[0])||placeholderImg(l.category);
+function priceLabel(l){
+  if(l.type==='Exchange')return 'Exchange';
+  if(l.type==='Rent')return `${money(l.price)} / ${l.rentUnit}`;
+  return money(l.price)+(l.negotiable?' • Negotiable':'');
+}
+const typeClass=ty=>({Rent:'c-amber',Sale:'c-orange',Exchange:'c-green'}[ty]);
+const statusClass=s=>({available:'c-green',reserved:'c-yellow',rented:'c-purple',sold:'c-red',exchanged:'c-red',paused:'c-slate'}[s]);
+const condClass=c=>({'Brand New':'c-green','Like New':'c-teal','Good':'c-blue'}[c]||'c-slate');
+function syncListing(l){
+  if(!l||['paused','sold','exchanged'].includes(l.status))return;
+  const rs=S.requests.filter(r=>r.listingId===l.id);
+  if(rs.some(r=>r.status==='active'))l.status='rented';
+  else if(l.type!=='Rent'&&rs.some(r=>r.status==='accepted'))l.status='reserved';
+  else l.status='available';
+}
+function waLink(u,text){
+  if(!u||!u.showWhatsapp||!/^\d{10}$/.test(u.phone||''))return '';
+  return `https://wa.me/91${u.phone}?text=${encodeURIComponent(text||'Hi! I found you on Exchanger.')}`;
+}
+function cardHtml(l){
+  const me=currentUser();const seller=userById(l.sellerId);const own=me&&me.id===l.sellerId;
+  const saved=me&&(S.saved[me.id]||[]).includes(l.id);
+  return `<article class="card surface">
+    <div class="img-wrap" onclick="openListing('${l.id}')">
+      <img loading="lazy" decoding="async" src="${esc(imgOf(l))}" alt="${esc(l.title)}" onerror="this.onerror=null;this.src=PH">
+      <div class="absolute top-3 left-3 flex flex-wrap gap-1.5"><span class="chip ${typeClass(l.type)}">${t(l.type)}</span><span class="chip ${condClass(l.condition)}">${esc(l.condition)}</span>${l.status!=='available'?`<span class="chip ${statusClass(l.status)}">${t('st_'+l.status)}</span>`:''}${l.demo?'<span class="chip c-slate">Sample</span>':''}</div>
+      <button class="icon-btn absolute top-3 right-3" aria-label="Save" onclick="event.stopPropagation();toggleSave('${l.id}')"><i class="${saved?'fa-solid text-rose-500':'fa-regular'} fa-heart"></i></button>
+      <div class="price-tag">${esc(priceLabel(l))}</div>${l.images&&l.images.length>1?`<span class="chip c-slate absolute bottom-3 left-3"><i class="fa-solid fa-images"></i>${l.images.length}</span>`:''}</div>
+    <div class="p-5 flex-grow flex flex-col justify-between">
+      <div><span class="text-[11px] font-bold text-orange-600 uppercase tracking-widest">${t(catKey(l.category))}</span>
+      <h3 class="font-bold text-base mt-1 line-clamp-1 cursor-pointer hover:text-orange-600" onclick="openListing('${l.id}')">${esc(l.title)}</h3>
+      <p class="text-xs muted mt-1.5 line-clamp-2">${esc(l.desc)}</p>
+      <p class="text-[11px] muted mt-2"><i class="fa-solid fa-location-dot mr-1"></i>${esc(l.location)} • ${esc(l.college)}</p></div>
+      <div class="mt-4 pt-4 border-t flex items-center justify-between gap-2" style="border-color:var(--border)">
+        <div class="flex items-center gap-2.5 min-w-0">${avatar(seller,36)}<div class="min-w-0"><p class="text-xs font-bold truncate">${esc(seller?seller.name:'Former user')}${own?' (you)':''}</p>${ratingHtml(l.sellerId)}</div></div>
+        <button class="btn btn-soft btn-sm" onclick="openListing('${l.id}')">${t('view_deal')}</button></div></div></article>`;
+}
+
+/* ---------- home ---------- */
+function statsNow(){
+  const done=S.requests.filter(r=>r.status==='completed');
+  const realUsers=S.users.filter(u=>!u.demo).length;
+  return{active:S.listings.filter(l=>!['sold','exchanged','paused'].includes(l.status)).length,students:realUsers||S.users.length,deals:done.length};
+}
+function renderHome(){
+  const st=statsNow();const me=currentUser();
+  $('view').innerHTML=`<section class="hero py-12 lg:py-20"><div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
+    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">${t('hero_1')} <span class="bg-gradient-to-r from-amber-300 via-orange-300 to-indigo-300 bg-clip-text text-transparent">${t('hero_2')}</span> in ₹</h1>
+    <p class="mt-5 text-slate-300 max-w-2xl mx-auto">${t('hero_sub')}</p>
+    <div class="mt-7 max-w-xl mx-auto relative"><i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+      <input id="searchInput" value="${esc(F.q)}" oninput="debouncedSearch(this.value)" placeholder="${esc(t('search_ph'))}" aria-label="Search" class="w-full pl-11 pr-4 py-3.5 rounded-2xl text-sm font-medium text-slate-900 bg-white focus:outline-none focus:ring-4 focus:ring-orange-400/40"></div>
+    <div class="mt-9 grid grid-cols-2 sm:grid-cols-4 gap-5 max-w-3xl mx-auto border-t border-white/10 pt-6">
+      ${[[st.active,'stat_active'],[st.students,'stat_students'],[st.deals,'stat_deals'],['₹0','stat_fee']].map(([v,k])=>`<div><p class="text-2xl font-extrabold">${v}</p><p class="text-[10px] text-orange-300 uppercase tracking-widest font-bold mt-1">${t(k)}</p></div>`).join('')}</div></div></section>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+    <div id="chips" class="flex gap-2 overflow-x-auto pb-2 scrollbar-none"></div>
+    <div class="mt-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3 items-end">
+      <div><label class="lbl">${t('type')}</label><select class="inp" onchange="setF('type',this.value)"><option value="all">${t('all_modes')}</option>${['Rent','Exchange','Sale'].map(x=>`<option value="${x}" ${F.type===x?'selected':''}>${t(x)}</option>`).join('')}</select></div>
+      <div><label class="lbl">${t('campus')}</label><select class="inp" onchange="setF('scope',this.value)"><option value="all">${t('all_colleges')}</option>${me&&me.college?`<option value="mine" ${F.scope==='mine'?'selected':''}>${t('my_college')}: ${esc(me.college)}</option>`:''}</select></div>
+      <div><label class="lbl">${t('location')}</label><select class="inp" onchange="setF('location',this.value)"><option value="all">${t('any')}</option>${opts(LOCATIONS,F.location)}</select></div>
+      <div><label class="lbl">${t('semester')}</label><select class="inp" onchange="setF('sem',this.value)"><option value="all">${t('any')}</option>${opts([1,2,3,4,5,6,7,8],F.sem)}</select></div>
+      <div><label class="lbl">${t('branch')}</label><select class="inp" onchange="setF('branch',this.value)"><option value="all">${t('any')}</option>${opts(BRANCHES,F.branch)}</select></div>
+      <div><label class="lbl">${t('max_price')}</label><input class="inp" type="number" min="0" step="50" value="${esc(F.maxPrice)}" oninput="debouncedPrice(this.value)" placeholder="e.g. 500"></div>
+      <div><label class="lbl">${t('sort')}</label><select class="inp" onchange="setF('sort',this.value)">${[['newest','newest'],['price-low','price_low'],['price-high','price_high']].map(([v,k])=>`<option value="${v}" ${F.sort===v?'selected':''}>${t(k)}</option>`).join('')}</select></div>
+      <label class="flex items-center gap-2 text-xs font-bold muted pb-3"><input type="checkbox" ${F.hideSold?'checked':''} onchange="setF('hideSold',this.checked)"> ${t('hide_sold')}</label></div>
+    <div class="flex items-center justify-between mt-5 mb-4"><p id="countLabel" class="text-sm font-bold muted"></p><button class="text-xs font-bold text-orange-600" onclick="resetFilters(true)">${t('reset')}</button></div>
+    <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+    <div id="empty" class="hidden">${emptyBox('fa-box-open',t('no_items'),t('no_items_sub'))}</div>
+    <div class="text-center mt-8"><button id="loadMore" class="btn btn-soft hidden" onclick="F.page++;renderGrid()">${t('load_more')}</button></div></div>`;
+  renderChips();renderGrid();
+}
+function renderChips(){
+  const c=$('chips');if(!c)return;
+  c.innerHTML=[{id:'All',icon:'fa-border-all'},...CATS].map(x=>`<button class="cat-btn ${F.cat===x.id?'on':''}" onclick="setF('cat','${x.id}')"><i class="fa-solid ${x.icon} mr-2 ${F.cat===x.id?'':'text-orange-500'}"></i>${x.id==='All'?t('all_items'):t(catKey(x.id))}</button>`).join('');
+}
+function getVisible(){
+  const me=currentUser();const q=F.q.trim().toLowerCase();
+  const a=S.listings.filter(l=>{
+    const seller=userById(l.sellerId);
+    if(seller&&seller.banned)return false;
+    if(l.status==='paused'&&!(me&&me.id===l.sellerId))return false;
+    if(F.hideSold&&['sold','exchanged'].includes(l.status))return false;
+    if(isBlockedPair(me,l.sellerId))return false;
+    if(F.cat!=='All'&&l.category!==F.cat)return false;
+    if(F.type!=='all'&&l.type!==F.type)return false;
+    if(F.scope==='mine'&&me&&l.college!==me.college)return false;
+    if(F.location!=='all'&&l.location!==F.location)return false;
+    if(F.sem!=='all'&&l.semester!=='Any'&&String(l.semester)!==String(F.sem))return false;
+    if(F.branch!=='all'&&l.branch!=='Any'&&l.branch!==F.branch)return false;
+    if(F.maxPrice!==''&&l.type!=='Exchange'&&l.price>Number(F.maxPrice))return false;
+    if(q&&![l.title,l.desc,l.category,l.edition,l.location,l.college].join(' ').toLowerCase().includes(q))return false;
+    return true;
+  });
+  if(F.sort==='price-low')a.sort((x,y)=>x.price-y.price);
+  else if(F.sort==='price-high')a.sort((x,y)=>y.price-x.price);
+  else a.sort((x,y)=>y.createdAt-x.createdAt);
+  return a;
+}
+function renderGrid(){
+  const g=$('grid');if(!g)return;
+  const list=getVisible();const shown=list.slice(0,F.page*CONFIG.PAGE_SIZE);
+  g.innerHTML=shown.map(cardHtml).join('');
+  $('empty').classList.toggle('hidden',list.length>0);
+  $('countLabel').textContent=`${list.length} ${t('items_found')}`;
+  $('loadMore').classList.toggle('hidden',shown.length>=list.length);
+}
+function setF(k,v){F[k]=v;F.page=1;if(k==='cat')renderChips();renderGrid()}
+let _st,_pt;
+const debouncedSearch=v=>{clearTimeout(_st);_st=setTimeout(()=>setF('q',v),150)};
+const debouncedPrice=v=>{clearTimeout(_pt);_pt=setTimeout(()=>setF('maxPrice',v),250)};
+function resetFilters(rerender){Object.assign(F,{q:'',cat:'All',type:'all',sort:'newest',scope:'all',location:'all',sem:'all',branch:'all',maxPrice:'',hideSold:true,page:1});if(rerender!==false&&state.view==='home')renderHome()}
+
+/* ---------- my listings / saved ---------- */
+function renderMine(){
+  const me=currentUser();if(!me){state.view='home';renderHome();return}
+  const mine=S.listings.filter(l=>l.sellerId===me.id).sort((a,b)=>b.createdAt-a.createdAt);
+  $('view').innerHTML=pageWrap(t('my_listings'),`${mine.length} of ${CONFIG.MAX_LISTINGS_PER_USER} listing slots used`,mine.length?`<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">${mine.map(cardHtml).join('')}</div>`:emptyBox('fa-box-archive','You have no listings yet','Tap "List an Item" to post your first one.'));
+}
+function renderSaved(){
+  const me=currentUser();if(!me){state.view='home';renderHome();return}
+  const ids=S.saved[me.id]||[];const items=ids.map(listingById).filter(Boolean);
+  $('view').innerHTML=pageWrap(t('saved'),'',items.length?`<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">${items.map(cardHtml).join('')}</div>`:emptyBox('fa-heart','Nothing saved yet','Tap the heart on any listing to save it. You will be alerted if the price drops.'));
+}
+function toggleSave(id){
+  const me=requireUser('Sign in to save items.');if(!me)return;
+  const a=S.saved[me.id]||(S.saved[me.id]=[]);const i=a.indexOf(id);
+  if(i>=0){a.splice(i,1);toast('Removed from saved','info')}else{a.push(id);toast('Saved. We will alert you if the price drops.')}
+  save('saved');if(state.view==='home')renderGrid();else renderView();
+}
+
+/* ---------- listing details ---------- */
+function openListing(id){
+  const l=listingById(id);if(!l)return;
+  const me=currentUser();const own=me&&me.id===l.sellerId;const seller=userById(l.sellerId);const admin=me&&me.role==='admin';
+  if(seller&&seller.banned){toast('This seller account is suspended by moderators','error');return}
+  const imgs=l.images.length?l.images:[placeholderImg(l.category)];state.detailImgs=imgs;
+  const wa=waLink(seller,`Hi ${seller?seller.name:''}, I'm interested in "${l.title}" on Exchanger.`);
+  const closed=['sold','exchanged','paused'].includes(l.status);
+  const reqLabel={Rent:'Request to Rent',Sale:'Buy / Make an Offer',Exchange:'Propose an Exchange'}[l.type];
+  const detail=(k,v)=>v?`<div><p class="lbl !mb-0">${k}</p><p class="text-sm font-semibold">${esc(v)}</p></div>`:'';
+  const owner=own?`<div class="grid grid-cols-2 gap-2"><button class="btn btn-soft" onclick="openListingForm('${l.id}')"><i class="fa-solid fa-pen"></i> Edit</button>
+      ${l.status==='paused'?`<button class="btn btn-soft" onclick="setListingStatus('${l.id}','resume')"><i class="fa-solid fa-play"></i> Resume</button>`:`<button class="btn btn-soft" onclick="setListingStatus('${l.id}','paused')"><i class="fa-solid fa-pause"></i> Pause</button>`}
+      ${l.type==='Sale'&&l.status!=='sold'?`<button class="btn btn-green" onclick="setListingStatus('${l.id}','sold')"><i class="fa-solid fa-check"></i> Mark as sold</button>`:''}
+      ${l.type==='Exchange'&&l.status!=='exchanged'?`<button class="btn btn-green" onclick="setListingStatus('${l.id}','exchanged')"><i class="fa-solid fa-check"></i> Mark exchanged</button>`:''}
+      <button class="btn btn-danger" onclick="deleteListing('${l.id}')"><i class="fa-solid fa-trash-can"></i> Delete</button></div>`
+    :`<div class="space-y-2">
+      <button class="btn btn-primary w-full py-3" ${closed?'disabled':''} onclick="openRequest('${l.id}')"><i class="fa-solid fa-handshake"></i> ${closed?t('st_'+l.status):reqLabel}</button>
+      <div class="grid grid-cols-2 gap-2"><button class="btn btn-indigo" onclick="startChat('${l.id}')"><i class="fa-solid fa-comments"></i> Chat</button>${wa?`<a class="btn btn-green" target="_blank" rel="noopener noreferrer" href="${esc(wa)}"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>`:`<button class="btn btn-soft" onclick="toggleSave('${l.id}')"><i class="fa-regular fa-heart"></i> Save</button>`}</div>
+      <button class="text-[11px] muted font-bold w-full" onclick="openReport('listing','${l.id}')"><i class="fa-solid fa-flag mr-1"></i>Report this listing</button>
+      ${admin?`<button class="btn btn-danger w-full" onclick="deleteListing('${l.id}')"><i class="fa-solid fa-gavel"></i> Remove (moderator)</button>`:''}</div>`;
+  openModal(`<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+    <div><div class="rounded-2xl overflow-hidden s2 h-64"><img id="detailMain" style="cursor:zoom-in" title="Tap to enlarge" onclick="openLightbox()" src="${esc(imgs[0])}" class="w-full h-full object-cover" alt="${esc(l.title)}" onerror="this.onerror=null;this.src=PH"></div>
+      ${imgs.length>1?`<div class="flex gap-2 mt-2">${imgs.map((s,i)=>`<img src="${esc(s)}" class="w-14 h-14 rounded-xl object-cover cursor-pointer border-2" style="border-color:var(--border)" onclick="setDetailImg(${i})" alt="Photo ${i+1}">`).join('')}</div>`:''}
+      ${l.type==='Rent'?`<div class="mt-4"><p class="lbl">Availability</p><div id="calBox"></div></div>`:''}</div>
+    <div class="flex flex-col"><div class="flex flex-wrap gap-1.5 mb-2 pr-8"><span class="chip ${typeClass(l.type)}">${t(l.type)}</span><span class="chip ${condClass(l.condition)}">${esc(l.condition)}</span><span class="chip ${statusClass(l.status)}">${t('st_'+l.status)}</span>${l.demo?'<span class="chip c-slate">Sample listing</span>':''}</div>
+      <h2 class="text-xl font-extrabold">${esc(l.title)}</h2>
+      <p class="text-xl font-extrabold text-orange-600 mt-1">${esc(priceLabel(l))}</p>
+      ${l.type==='Rent'&&l.deposit?`<p class="text-xs muted font-semibold">Refundable deposit: ${money(l.deposit)}</p>`:''}
+      ${l.type==='Exchange'&&l.exchangeWant?`<p class="text-sm mt-2 s2 rounded-xl p-3"><b>Wants in return:</b> ${esc(l.exchangeWant)}</p>`:''}
+      <p class="text-sm mt-3" style="white-space:pre-wrap">${esc(l.desc)}</p>
+      <div class="grid grid-cols-2 gap-3 mt-4">${detail('Category',t(catKey(l.category)))}${detail('Pickup spot',l.location)}${detail('Semester',l.semester!=='Any'?'Sem '+l.semester:'')}${detail('Branch',l.branch!=='Any'?l.branch:'')}${detail('Edition / Model',l.edition)}${detail('Campus',l.college)}${detail('Posted',fmtDate(l.createdAt))}</div>
+      <div class="mt-5 pt-4 border-t" style="border-color:var(--border)">
+        <div class="flex items-center gap-3 mb-4 cursor-pointer" onclick="openProfile('${l.sellerId}')">${avatar(seller,42)}<div class="min-w-0"><p class="text-sm font-extrabold truncate">${esc(seller?seller.name:'Former user')}</p><p class="text-[11px] muted truncate">${esc(seller?`${seller.year} • ${seller.branch}`:'')}</p>${ratingHtml(l.sellerId)}</div></div>
+        <div class="flex flex-wrap gap-1 mb-3">${trustChips(seller)}</div>${owner}</div></div></div>
+    <p class="text-[11px] muted mt-5"><i class="fa-solid fa-shield-halved mr-1"></i>Meet in public campus spots. Inspect the item before paying. Never share OTPs or passwords.</p>`,{wide:true});
+  if(l.type==='Rent'){const d=new Date();renderCal(l.id,d.getFullYear(),d.getMonth())}
+}
+function setDetailImg(i){state.detailIdx=i;const el=$('detailMain');if(el)el.src=state.detailImgs[i]}
+function openLightbox(){
+  const s=state.detailImgs;if(!s.length)return;const i=state.detailIdx||0;
+  openModal(`<img id="lbImg" src="${esc(s[i])}" class="w-full rounded-2xl mt-6" alt="Product photo">${s.length>1?`<div class="flex gap-2 mt-3 justify-center">${s.map((x,k)=>`<img src="${esc(x)}" class="w-14 h-14 rounded-xl object-cover cursor-pointer" onclick="$('lbImg').src=state.detailImgs[${k}]" alt="Photo ${k+1}">`).join('')}</div>`:''}`,{wide:true});
+}
+function renderCal(lid,y,m){
+  const box=$('calBox');if(!box)return;state.cal={lid,y,m};
+  const booked=new Set();
+  S.requests.filter(r=>r.listingId===lid&&r.type==='Rent'&&['accepted','active'].includes(r.status)).forEach(r=>{for(let d=Date.parse(r.start);d<=Date.parse(r.end);d+=864e5)booked.add(new Date(d).toISOString().slice(0,10))});
+  const pad=new Date(Date.UTC(y,m,1)).getUTCDay(),dim=new Date(Date.UTC(y,m+1,0)).getUTCDate(),today=todayStr();
+  let cells='';for(let i=0;i<pad;i++)cells+='<span></span>';
+  for(let d=1;d<=dim;d++){const ds=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;cells+=`<span class="cal-d ${booked.has(ds)?'cal-b':ds<today?'cal-p':'cal-f'}">${d}</span>`}
+  const label=new Date(Date.UTC(y,m,1)).toLocaleDateString('en-IN',{month:'long',year:'numeric',timeZone:'UTC'});
+  box.innerHTML=`<div class="flex items-center justify-between mb-2"><button class="icon-btn" onclick="calNav(-1)" aria-label="Previous month"><i class="fa-solid fa-chevron-left text-xs"></i></button><span class="text-xs font-extrabold">${label}</span><button class="icon-btn" onclick="calNav(1)" aria-label="Next month"><i class="fa-solid fa-chevron-right text-xs"></i></button></div>
+  <div class="grid grid-cols-7 gap-1 text-center text-[10px] font-bold muted mb-1">${['S','M','T','W','T','F','S'].map(x=>`<span>${x}</span>`).join('')}</div><div class="grid grid-cols-7 gap-1">${cells}</div>
+  <p class="text-[10px] muted mt-2"><span class="cal-d cal-f inline-flex !w-4 !h-4 align-middle"></span> free &nbsp; <span class="cal-d cal-b inline-flex !w-4 !h-4 align-middle"></span> booked</p>`;
+}
+function calNav(dl){let{lid,y,m}=state.cal;m+=dl;if(m<0){m=11;y--}if(m>11){m=0;y++}renderCal(lid,y,m)}
+
+/* ---------- listing create / edit / delete ---------- */
+function compressImage(file,maxDim=900,q=.72){
+  return new Promise((res,rej)=>{
+    if(!/^image\/(jpeg|png|webp)$/.test(file.type))return rej(new Error('Only JPG, PNG or WEBP images are allowed'));
+    if(file.size>8*1024*1024)return rej(new Error('Image is larger than 8MB'));
+    const img=new Image(),url=URL.createObjectURL(file);
+    img.onload=()=>{const s=Math.min(1,maxDim/Math.max(img.width,img.height));const c=document.createElement('canvas');c.width=Math.round(img.width*s);c.height=Math.round(img.height*s);c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(url);res(c.toDataURL('image/jpeg',q))};
+    img.onerror=()=>{URL.revokeObjectURL(url);rej(new Error('Could not read that image'))};img.src=url;
+  });
+}
+async function addFiles(files){
+  for(const f of files){
+    if(state.formImages.length>=CONFIG.MAX_PHOTOS){toast(`Max ${CONFIG.MAX_PHOTOS} photos`,'info');break}
+    try{state.formImages.push(await compressImage(f))}catch(e){toast(e.message,'error')}
+  }
+  renderFormThumbs();
+}
+async function onPhotos(ev){const files=[...ev.target.files];await addFiles(files);ev.target.value=''}
+function dropPhotos(ev){ev.preventDefault();addFiles([...(ev.dataTransfer&&ev.dataTransfer.files||[])])}
+function renderFormThumbs(){
+  const b=$('lf_thumbs');if(!b)return;
+  b.innerHTML=state.formImages.map((s,i)=>`<div class="relative"><img src="${esc(s)}" class="w-20 h-20 rounded-xl object-cover" alt="Photo ${i+1}">${i===0?'<span class="chip c-orange absolute bottom-1 left-1 !text-[8px]">Cover</span>':`<button type="button" class="chip c-slate absolute bottom-1 left-1 !text-[8px]" onclick="coverPhoto(${i})">Set cover</button>`}<button type="button" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-rose-600 text-white text-[10px]" onclick="rmPhoto(${i})" aria-label="Remove photo">×</button></div>`).join('');
+}
+function rmPhoto(i){state.formImages.splice(i,1);renderFormThumbs()}
+function coverPhoto(i){const[x]=state.formImages.splice(i,1);state.formImages.unshift(x);renderFormThumbs()}
+function lfType(){
+  const ty=$('lf_type').value;
+  $('lf_priceBox').classList.toggle('hidden',ty==='Exchange');
+  $('lf_rentBox').classList.toggle('hidden',ty!=='Rent');
+  $('lf_negBox').classList.toggle('hidden',ty!=='Sale');
+  $('lf_wantBox').classList.toggle('hidden',ty!=='Exchange');
+}
+function openListingForm(id){
+  const me=requireUser('Sign in to list an item.');if(!me)return;
+  const l=id?listingById(id):null;
+  if(l&&l.sellerId!==me.id&&me.role!=='admin')return toast('You can only edit your own listings','error');
+  if(!l&&S.listings.filter(x=>x.sellerId===me.id).length>=CONFIG.MAX_LISTINGS_PER_USER)return toast(`Listing limit reached (${CONFIG.MAX_LISTINGS_PER_USER}). Delete an old one first.`,'error');
+  state.formImages=l?[...l.images]:[];
+  const v=l||{title:'',category:'Books',condition:'Good',type:'Rent',price:'',rentUnit:'week',deposit:0,negotiable:false,exchangeWant:'',semester:'Any',branch:'Any',edition:'',location:LOCATIONS[0],desc:''};
+  closeAllModals();
+  openModal(`<h3 class="text-xl font-extrabold mb-1">${l?'Edit listing':'List a campus item'}</h3><p class="text-xs muted mb-5">Rent, exchange or sell to fellow students. No commission.</p>
+  <form onsubmit="saveListing(event,'${l?l.id:''}')" class="space-y-4">
+    <div><label class="lbl">Item title</label><input id="lf_title" class="inp" maxlength="80" value="${esc(v.title)}" placeholder="e.g. Engineering Mathematics by B.S. Grewal" required></div>
+    <div class="grid grid-cols-2 gap-3"><div><label class="lbl">Category</label><select id="lf_cat" class="inp">${CATS.map(c=>`<option value="${c.id}" ${v.category===c.id?'selected':''}>${t(catKey(c.id))}</option>`).join('')}</select></div>
+      <div><label class="lbl">Condition</label><select id="lf_cond" class="inp">${opts(['Brand New','Like New','Good'],v.condition)}</select></div></div>
+    <div class="grid grid-cols-2 gap-3"><div><label class="lbl">Listing mode</label><select id="lf_type" class="inp" onchange="lfType()"><option value="Rent" ${v.type==='Rent'?'selected':''}>Rent</option><option value="Sale" ${v.type==='Sale'?'selected':''}>Sell</option><option value="Exchange" ${v.type==='Exchange'?'selected':''}>Exchange / Trade</option></select></div>
+      <div id="lf_priceBox"><label class="lbl">Price (₹)</label><input id="lf_price" type="number" min="1" max="100000" class="inp" value="${esc(v.price)}" placeholder="150"></div></div>
+    <div id="lf_rentBox" class="grid grid-cols-2 gap-3"><div><label class="lbl">Rate per</label><select id="lf_unit" class="inp">${opts(['day','week','month'],v.rentUnit)}</select></div><div><label class="lbl">Refundable deposit (₹)</label><input id="lf_dep" type="number" min="0" max="50000" class="inp" value="${esc(v.deposit||0)}"></div></div>
+    <label id="lf_negBox" class="flex items-center gap-2 text-xs font-bold"><input type="checkbox" id="lf_neg" ${v.negotiable?'checked':''}> Price is negotiable (buyers can make an offer)</label>
+    <div id="lf_wantBox"><label class="lbl">What do you want in return?</label><input id="lf_want" class="inp" maxlength="120" value="${esc(v.exchangeWant)}" placeholder="e.g. Physics lab manual, or any 2nd-sem notes"></div>
+    <div class="grid grid-cols-2 gap-3"><div><label class="lbl">Semester</label><select id="lf_sem" class="inp"><option value="Any">Any</option>${opts([1,2,3,4,5,6,7,8],v.semester)}</select></div><div><label class="lbl">Branch</label><select id="lf_branch" class="inp"><option value="Any">Any</option>${opts(BRANCHES,v.branch)}</select></div></div>
+    <div class="grid grid-cols-2 gap-3"><div><label class="lbl">Edition / ISBN / Model</label><input id="lf_ed" class="inp" maxlength="60" value="${esc(v.edition)}"></div><div><label class="lbl">Pickup spot</label><select id="lf_loc" class="inp">${opts(LOCATIONS,v.location)}</select></div></div>
+    <div><label class="lbl">Product photos * (up to ${CONFIG.MAX_PHOTOS}, auto-compressed)</label>
+      <div class="flex flex-col sm:flex-row gap-2" ondragover="event.preventDefault()" ondrop="dropPhotos(event)">
+        <label class="flex-1 flex flex-col items-center justify-center h-24 border-2 border-dashed rounded-2xl cursor-pointer s2 text-center px-2" style="border-color:var(--border)"><i class="fa-solid fa-cloud-arrow-up text-xl text-orange-500 mb-1"></i><span class="text-xs font-bold muted">Choose from gallery or drag photos here</span><input type="file" accept="image/jpeg,image/png,image/webp" multiple class="hidden" onchange="onPhotos(event)"></label>
+        <label class="sm:w-36 flex flex-col items-center justify-center h-24 border-2 border-dashed rounded-2xl cursor-pointer s2 text-center px-2" style="border-color:var(--border)"><i class="fa-solid fa-camera text-xl text-orange-500 mb-1"></i><span class="text-xs font-bold muted">Take a photo</span><input type="file" accept="image/*" capture="environment" class="hidden" onchange="onPhotos(event)"></label></div>
+      <p class="text-[11px] muted mt-1.5">Clear photos help buyers trust your listing. Show the real item, not a stock picture.</p><div id="lf_thumbs" class="flex flex-wrap gap-3 mt-3"></div></div>
+    <div><label class="lbl">Description</label><textarea id="lf_desc" rows="3" maxlength="600" class="inp" placeholder="Condition details, what's included..." required>${esc(v.desc)}</textarea></div>
+    <button class="btn btn-primary w-full py-3">${l?'Save changes':'Publish listing'}</button></form>`);
+  lfType();renderFormThumbs();
+}
+function saveListing(e,id){
+  e.preventDefault();const me=currentUser();if(!me)return;
+  const type=$('lf_type').value;const title=$('lf_title').value.trim(),desc=$('lf_desc').value.trim();
+  const price=type==='Exchange'?0:Math.round(Number($('lf_price').value));
+  if(title.length<3)return toast('Title is too short','error');
+  if(!state.formImages.length&&!id)return toast('Please add at least one photo so buyers can see the product','error');
+  if(type!=='Exchange'&&!(price>=1&&price<=100000))return toast('Enter a price between ₹1 and ₹1,00,000','error');
+  if(type==='Exchange'&&!$('lf_want').value.trim())return toast('Tell people what you want in return','error');
+  const data={title,desc,category:$('lf_cat').value,condition:$('lf_cond').value,type,price,
+    rentUnit:type==='Rent'?$('lf_unit').value:'week',deposit:type==='Rent'?Math.max(0,Math.round(Number($('lf_dep').value)||0)):0,
+    negotiable:type==='Sale'&&$('lf_neg').checked,exchangeWant:type==='Exchange'?$('lf_want').value.trim():'',
+    semester:$('lf_sem').value,branch:$('lf_branch').value,edition:$('lf_ed').value.trim(),location:$('lf_loc').value,images:[...state.formImages]};
+  if(id){
+    const l=listingById(id);if(!l||(l.sellerId!==me.id&&me.role!=='admin'))return toast('Not allowed','error');
+    const oldPrice=l.price;Object.assign(l,data);
+    if(price<oldPrice&&type!=='Exchange')Object.entries(S.saved).forEach(([u,ids])=>{if(ids.includes(l.id)&&u!==me.id)notify(u,`Price drop: "${l.title}" is now ${priceLabel(l)} (was ${money(oldPrice)}).`,'listing:'+l.id)});
+    syncListing(l);
+    if(!save('listings','notifs'))return;toast('Listing updated');
+  }else{
+    S.listings.unshift({id:'l_'+uid(),sellerId:me.id,college:me.college,status:'available',createdAt:Date.now(),...data});
+    if(!save('listings'))return;toast('Your item is live!');
+  }
+  closeAllModals();renderView();
+}
+function setListingStatus(id,act){
+  const me=currentUser(),l=listingById(id);if(!me||!l||l.sellerId!==me.id)return toast('Not allowed','error');
+  if(act==='paused')l.status='paused';else if(act==='resume'){l.status='available';syncListing(l)}else l.status=act;
+  if(['sold','exchanged'].includes(l.status))S.requests.filter(r=>r.listingId===id&&r.status==='pending').forEach(r=>{r.status='declined';notify(r.buyerId,`"${l.title}" is no longer available.`,'requests')});
+  save('listings','requests','notifs');closeAllModals();renderView();toast('Listing updated');
+}
+function deleteListing(id){
+  const me=currentUser(),l=listingById(id);if(!me||!l)return;
+  if(l.sellerId!==me.id&&me.role!=='admin')return toast('Only the owner can delete this listing','error');
+  if(S.requests.some(r=>r.listingId===id&&['accepted','active'].includes(r.status))&&!confirm('This listing has accepted or active requests. Deleting will cancel them. Continue?'))return;
+  if(!confirm(`Delete "${l.title}" permanently?`))return;
+  S.requests.filter(r=>r.listingId===id&&['pending','accepted','active'].includes(r.status)).forEach(r=>{r.status='cancelled';notify(r.buyerId,`"${l.title}" was removed by the ${l.sellerId===me.id?'seller':'moderators'}.`,'requests')});
+  if(l.sellerId!==me.id)notify(l.sellerId,`Your listing "${l.title}" was removed by moderators.`,'mine');
+  S.listings=S.listings.filter(x=>x.id!==id);Object.keys(S.saved).forEach(u=>S.saved[u]=S.saved[u].filter(x=>x!==id));
+  S.reports.forEach(r=>{if(r.targetId===id&&r.status==='open')r.status='resolved'});
+  save('listings','requests','saved','notifs','reports');closeAllModals();renderView();toast('Listing deleted','info');
+}
+
+/* ---------- requests ---------- */
+function rentCost(l,start,end){const days=daysBetween(start,end)+1;const units=l.rentUnit==='day'?days:l.rentUnit==='week'?Math.ceil(days/7):days<=31?1:Math.ceil(days/30.42);return{days,units,total:units*l.price}}
+function rentOverlap(lid,s,e,ignoreId){return S.requests.some(r=>r.listingId===lid&&r.id!==ignoreId&&r.type==='Rent'&&['accepted','active'].includes(r.status)&&s<=r.end&&e>=r.start)}
+function openRequest(id){
+  const me=requireUser('Sign in to send a request.');if(!me)return;
+  const l=listingById(id);if(!l)return;
+  const seller=userById(l.sellerId);
+  if(seller&&seller.banned)return toast('This seller account is suspended','error');
+  if(l.sellerId===me.id)return toast('This is your own listing','error');
+  if(isBlockedPair(me,l.sellerId))return toast('You cannot interact with this user','error');
+  if(['sold','exchanged','paused'].includes(l.status))return toast('This listing is not available','error');
+  if(S.requests.some(r=>r.listingId===id&&r.buyerId===me.id&&['pending','accepted','active'].includes(r.status)))return toast('You already have an open request for this item','info');
+  const today=todayStr();
+  closeAllModals();
+  openModal(`<h3 class="text-xl font-extrabold">${l.type==='Rent'?'Request to rent':l.type==='Sale'?'Buy or make an offer':'Propose an exchange'}</h3><p class="text-xs muted mb-4">${esc(l.title)}</p>
+  <form onsubmit="submitRequest(event,'${l.id}')" class="space-y-3.5">
+  ${l.type==='Rent'?`<div class="grid grid-cols-2 gap-3"><div><label class="lbl">From</label><input type="date" id="rq_s" class="inp" min="${today}" value="${today}" onchange="$('rq_e').min=this.value;calcRent('${l.id}')" required></div><div><label class="lbl">Until</label><input type="date" id="rq_e" class="inp" min="${today}" value="${today}" onchange="calcRent('${l.id}')" required></div></div><div id="rq_sum" class="s2 rounded-xl p-3 text-xs font-semibold"></div>`:''}
+  ${l.type==='Sale'?`<div><label class="lbl">${l.negotiable?'Your offer (₹)':'Price (₹)'}</label><input type="number" id="rq_price" class="inp" min="1" max="${l.price}" value="${l.price}" ${l.negotiable?'':'readonly'} required>${l.negotiable?`<p class="text-[11px] muted mt-1">Asking price is ${money(l.price)}. Fair offers get faster replies.</p>`:''}</div>`:''}
+  ${l.type==='Exchange'?`<div><p class="text-xs s2 rounded-xl p-3 mb-3"><b>Seller wants:</b> ${esc(l.exchangeWant||'open to offers')}</p><label class="lbl">What will you offer?</label><input id="rq_off" class="inp" maxlength="200" placeholder="Describe your item" required></div>`:''}
+  <div><label class="lbl">Message to seller (optional)</label><textarea id="rq_msg" rows="2" maxlength="300" class="inp" placeholder="Hi! I can meet at ${esc(l.location)} after 4 PM."></textarea></div>
+  <button class="btn btn-primary w-full py-3">Send request</button><p class="text-[11px] muted text-center">The seller must accept before anything is final. Exchanger does not process payments.</p></form>`);
+  if(l.type==='Rent')calcRent(l.id);
+}
+function calcRent(lid){
+  const l=listingById(lid),s=$('rq_s').value,e=$('rq_e').value,box=$('rq_sum');if(!l||!box)return;
+  if(!s||!e||e<s){box.innerHTML='<span class="text-rose-500">End date must be on or after the start date.</span>';return}
+  if(rentOverlap(lid,s,e)){box.innerHTML='<span class="text-rose-500">These dates overlap an existing booking. Check the calendar.</span>';return}
+  const c=rentCost(l,s,e);box.innerHTML=`${c.days} day(s) = ${c.units} ${l.rentUnit}(s) × ${money(l.price)} = <b>${money(c.total)}</b>${l.deposit?`<br>Plus refundable deposit <b>${money(l.deposit)}</b> • Total to hand over: <b>${money(c.total+l.deposit)}</b>`:''}`;
+}
+function submitRequest(e,lid){
+  e.preventDefault();const me=currentUser(),l=listingById(lid);if(!me||!l)return;
+  const seller=userById(l.sellerId);
+  if(seller&&seller.banned)return toast('This seller account is suspended','error');
+  if(l.sellerId===me.id||isBlockedPair(me,l.sellerId)||['sold','exchanged','paused'].includes(l.status))return toast('Request not possible','error');
+  const r={id:'r_'+uid(),listingId:lid,buyerId:me.id,sellerId:l.sellerId,type:l.type,status:'pending',createdAt:Date.now(),paid:false,seen:false,deposit:0,total:0,price:0};
+  const note=$('rq_msg').value.trim();let summary='';
+  if(l.type==='Rent'){
+    const s=$('rq_s').value,en=$('rq_e').value;
+    if(s<todayStr()||en<s)return toast('Check your dates','error');
+    if(rentOverlap(lid,s,en))return toast('Those dates are already booked','error');
+    const c=rentCost(l,s,en);Object.assign(r,{start:s,end:en,total:c.total,deposit:l.deposit});summary=`Rental request: ${fmtDay(s)} to ${fmtDay(en)} (${money(c.total)}${l.deposit?` + ${money(l.deposit)} deposit`:''}).`;
+  }else if(l.type==='Sale'){
+    const p=Math.round(Number($('rq_price').value));if(!(p>=1&&p<=l.price))return toast('Enter a valid offer','error');
+    r.price=l.negotiable?p:l.price;summary=`${r.price<l.price?'Offer':'Buy request'}: ${money(r.price)} for "${l.title}".`;
+  }else{
+    r.offering=$('rq_off').value.trim();if(r.offering.length<3)return toast('Describe what you are offering','error');summary=`Exchange proposal: I can offer "${r.offering}".`;
+  }
+  S.requests.unshift(r);
+  S.messages.push({id:uid(),threadId:lid+':'+me.id,listingId:lid,from:me.id,to:l.sellerId,text:(summary+(note?'\n'+note:'')).slice(0,500),ts:Date.now(),read:false});
+  notify(l.sellerId,`${me.name} sent a request for "${l.title}".`,'requests');
+  if(!save('requests','messages','notifs'))return;
+  closeAllModals();renderChrome();toast('Request sent. You will be notified when the seller responds.');
+}
+function renderRequests(){
+  const me=currentUser();if(!me){state.view='home';renderHome();return}
+  const inc=S.requests.filter(r=>r.sellerId===me.id),out=S.requests.filter(r=>r.buyerId===me.id);
+  if(!state.reqTab){
+    const hasUnseenOut=out.some(r=>r.status==='accepted'&&!r.seen);
+    const hasPendingInc=inc.some(r=>r.status==='pending');
+    state.reqTab=(hasUnseenOut&&!hasPendingInc)?'outgoing':'incoming';
+  }
+  const tab=state.reqTab;
+  const list=(tab==='incoming'?inc:out).slice().sort((a,b)=>b.createdAt-a.createdAt);
+  if(tab==='outgoing'){let ch=false;out.forEach(r=>{if(r.status==='accepted'&&!r.seen){r.seen=true;ch=true}});if(ch){save('requests');setTimeout(renderChrome,0)}}
+  const tabBtn=(k,l,n)=>`<button class="flex-1 py-2.5 rounded-xl text-xs font-extrabold ${tab===k?'surface text-orange-600':'muted'}" onclick="state.reqTab='${k}';renderRequests()">${l} (${n})</button>`;
+  $('view').innerHTML=pageWrap(t('requests'),'Rentals, purchases and exchanges in progress',`<div class="flex s2 p-1.5 rounded-2xl mb-5 max-w-sm">${tabBtn('incoming','Received',inc.length)}${tabBtn('outgoing','Sent',out.length)}</div>
+  ${list.length?`<div class="space-y-4">${list.map(reqCard).join('')}</div>`:emptyBox('fa-handshake','Nothing here yet',tab==='incoming'?'Requests from other students will show up here.':'Find something on the home page and send a request.')}`);
+}
+const reqStatusClass=s=>({pending:'c-yellow',accepted:'c-blue',active:'c-purple',completed:'c-green',declined:'c-red',cancelled:'c-slate'}[s]);
+function reqCard(r){
+  const me=currentUser();const l=listingById(r.listingId);const isSeller=r.sellerId===me.id;const other=userById(isSeller?r.buyerId:r.sellerId);
+  const od=isOverdue(r);const rated=S.reviews.some(v=>v.requestId===r.id&&v.authorId===me.id);
+  let detail='';
+  if(r.type==='Rent')detail=`${fmtDay(r.start)} → ${fmtDay(r.end)} • Rent ${money(r.total)}${r.deposit?` + deposit ${money(r.deposit)}`:''}`;
+  else if(r.type==='Sale')detail=r.status==='pending'?`Offered price: ${money(r.price)}`:`Price agreed: ${money(r.price)}`;else detail=`Offering: ${esc(r.offering||'')}`;
+  const amt=r.type==='Rent'?r.total+r.deposit:r.type==='Sale'?r.price:0;
+  const btns=[];
+  if(isSeller){
+    if(r.status==='pending'){btns.push(`<button class="btn btn-green btn-sm" onclick="reqAction('${r.id}','accept')">Accept</button>`,`<button class="btn btn-danger btn-sm" onclick="reqAction('${r.id}','decline')">Decline</button>`)}
+    if(r.status==='accepted'){if(amt&&!r.paid)btns.push(`<button class="btn btn-soft btn-sm" onclick="reqAction('${r.id}','paid')">Mark payment received</button>`);btns.push(`<button class="btn btn-green btn-sm" onclick="reqAction('${r.id}','handover')">${r.type==='Rent'?'Handed over':'Deal done'}</button>`,`<button class="btn btn-danger btn-sm" onclick="reqAction('${r.id}','cancel')">Cancel</button>`)}
+    if(r.status==='active')btns.push(`<button class="btn btn-green btn-sm" onclick="reqAction('${r.id}','return')">Mark returned</button>`);
+  }else{
+    if(r.status==='pending')btns.push(`<button class="btn btn-danger btn-sm" onclick="reqAction('${r.id}','cancel')">Cancel request</button>`);
+    if(r.status==='accepted'){
+      const up=upiLink(r);
+      const sellerUser=userById(r.sellerId);
+      if(up)btns.push(`<a class="btn btn-indigo btn-sm" href="${esc(up)}"><i class="fa-solid fa-indian-rupee-sign"></i> Pay ${money(amt)} via UPI</a>`);
+      if(sellerUser&&sellerUser.upi)btns.push(`<button class="btn btn-soft btn-sm" onclick="navigator.clipboard.writeText('${esc(sellerUser.upi)}');toast('Copied UPI ID: ${esc(sellerUser.upi)}')"><i class="fa-solid fa-copy"></i> Copy UPI: ${esc(sellerUser.upi)}</button>`);
+      btns.push(`<button class="btn btn-danger btn-sm" onclick="reqAction('${r.id}','cancel')">Cancel</button>`);
+    }
+  }
+  if(r.status==='completed'&&!rated)btns.push(`<button class="btn btn-primary btn-sm" onclick="openReview('${r.id}')"><i class="fa-solid fa-star"></i> Leave a review</button>`);
+  btns.push(`<button class="btn btn-soft btn-sm" onclick="startChat('${r.listingId}','${r.buyerId}')"><i class="fa-solid fa-comments"></i> Chat</button>`);
+  return `<div class="surface rounded-3xl p-4 sm:p-5 flex flex-col sm:flex-row gap-4">
+    <img src="${esc(l?imgOf(l):PH)}" class="w-full sm:w-28 h-32 sm:h-28 rounded-2xl object-cover cursor-pointer" onclick="${l?`openListing('${l.id}')`:''}" alt="" onerror="this.onerror=null;this.src=PH">
+    <div class="flex-1 min-w-0"><div class="flex flex-wrap items-center gap-2 mb-1"><span class="chip ${typeClass(r.type)}">${t(r.type)}</span><span class="chip ${reqStatusClass(r.status)}">${t('rs_'+r.status)}</span>${od?'<span class="chip c-red"><i class="fa-solid fa-triangle-exclamation"></i>Overdue</span>':''}${r.paid?'<span class="chip c-teal">Payment received</span>':''}</div>
+    <h3 class="font-bold">${esc(l?l.title:'Removed listing')}</h3>
+    <p class="text-xs muted mt-1">${isSeller?'From':'To'}: <a href="javascript:void 0" class="font-bold text-orange-600" onclick="openProfile('${other?other.id:''}')">${esc(other?other.name:'Former user')}</a> • ${fmtTime(r.createdAt)}</p>
+    <p class="text-sm font-semibold mt-1.5">${detail}</p>
+    <div class="flex flex-wrap gap-2 mt-3">${btns.join('')}</div></div></div>`;
+}
+function upiLink(r){
+  const l=listingById(r.listingId),s=userById(r.sellerId);if(!s||!s.upi)return '';
+  const amt=r.type==='Rent'?r.total+r.deposit:r.type==='Sale'?r.price:0;if(!amt)return '';
+  return `upi://pay?pa=${encodeURIComponent(s.upi)}&pn=${encodeURIComponent(s.name)}&am=${amt}&cu=INR&tn=${encodeURIComponent('Exchanger: '+(l?l.title.slice(0,40):'item'))}`;
+}
+function reqAction(id,act){
+  const me=currentUser();if(!me)return;const r=S.requests.find(x=>x.id===id);if(!r)return;
+  const l=listingById(r.listingId);const isSeller=r.sellerId===me.id,isBuyer=r.buyerId===me.id;
+  if(!isSeller&&!isBuyer)return toast('Not allowed','error');
+  const title=l?l.title:'item';const otherId=isSeller?r.buyerId:r.sellerId;
+  const needSeller=['accept','decline','paid','handover','return'];
+  if(needSeller.includes(act)&&!isSeller)return toast('Only the seller can do this','error');
+  switch(act){
+    case 'accept':
+      if(r.status!=='pending')return;
+      if(!l||['sold','exchanged','paused'].includes(l.status))return toast('Listing is no longer available','error');
+      if(r.type==='Rent'&&rentOverlap(r.listingId,r.start,r.end,r.id))return toast('Those dates overlap another booking','error');
+      if(r.type!=='Rent'&&S.requests.some(x=>x.listingId===r.listingId&&x.id!==r.id&&['accepted','active'].includes(x.status)))return toast('You have already accepted another request for this item','error');
+      r.status='accepted';notify(otherId,`${me.name} accepted your request for "${title}". Arrange pickup in chat.`,'requests');break;
+    case 'decline':if(r.status!=='pending')return;r.status='declined';notify(otherId,`Your request for "${title}" was declined.`,'requests');break;
+    case 'cancel':
+      if(!(r.status==='pending'&&isBuyer)&&!(r.status==='accepted'))return;
+      r.status='cancelled';notify(otherId,`${me.name} cancelled the request for "${title}".`,'requests');break;
+    case 'paid':r.paid=true;notify(otherId,`Seller confirmed your payment for "${title}".`,'requests');break;
+    case 'handover':
+      if(r.status!=='accepted')return;
+      if(r.type==='Rent'){r.status='active';notify(otherId,`"${title}" handed over. Return by ${fmtDay(r.end)}.`,'requests')}
+      else{r.status='completed';if(l)l.status=r.type==='Sale'?'sold':'exchanged';
+        S.requests.filter(x=>x.listingId===r.listingId&&x.status==='pending').forEach(x=>{x.status='declined';notify(x.buyerId,`"${title}" is no longer available.`,'requests')});
+        notify(otherId,`Deal completed for "${title}". Please leave a review.`,'requests')}
+      break;
+    case 'return':if(r.status!=='active')return;r.status='completed';notify(otherId,`"${title}" marked as returned. Please leave a review.`,'requests');break;
+    default:return;
+  }
+  syncListing(l);
+  if(!save('requests','listings','notifs'))return;
+  renderView();toast('Updated');
+}
+function openReview(rid){
+  const me=currentUser();const r=S.requests.find(x=>x.id===rid);if(!me||!r||r.status!=='completed'||![r.buyerId,r.sellerId].includes(me.id))return;
+  if(S.reviews.some(v=>v.requestId===rid&&v.authorId===me.id))return toast('You already reviewed this deal','info');
+  const other=userById(me.id===r.sellerId?r.buyerId:r.sellerId);state.rv=0;
+  openModal(`<h3 class="text-xl font-extrabold mb-1">Rate ${esc(other?other.name:'this user')}</h3><p class="text-xs muted mb-4">Your honest feedback helps the community.</p>
+  <div id="rvStars" class="flex gap-2 text-3xl mb-4"></div><textarea id="rv_text" rows="3" maxlength="300" class="inp" placeholder="How was the experience? (optional)"></textarea>
+  <button class="btn btn-primary w-full mt-4" onclick="submitReview('${rid}')">Submit review</button>`);
+  drawStars();
+}
+function drawStars(){const b=$('rvStars');if(b)b.innerHTML=[1,2,3,4,5].map(i=>`<button type="button" onclick="state.rv=${i};drawStars()" aria-label="${i} star"><i class="fa-solid fa-star ${state.rv>=i?'star-on':'star-off'}"></i></button>`).join('')}
+function submitReview(rid){
+  const me=currentUser();const r=S.requests.find(x=>x.id===rid);if(!me||!r||r.status!=='completed')return;
+  if(!state.rv)return toast('Pick a star rating','error');
+  if(S.reviews.some(v=>v.requestId===rid&&v.authorId===me.id))return;
+  const target=me.id===r.sellerId?r.buyerId:r.sellerId;
+  S.reviews.push({id:uid(),requestId:rid,authorId:me.id,targetId:target,rating:state.rv,text:$('rv_text').value.trim(),ts:Date.now()});
+  notify(target,`${me.name} left you a ${state.rv}-star review.`,'requests');save('reviews','notifs');closeModal();renderView();toast('Thanks for your review!');
+}
+
+/* ---------- chat ---------- */
+const tidOf=(lid,bid)=>lid+':'+bid;
+function startChat(lid,buyerId){
+  const me=requireUser('Sign in to chat with the seller.');if(!me)return;
+  const l=listingById(lid);if(!l)return;
+  const seller=userById(l.sellerId);
+  if(seller&&seller.banned)return toast('This seller account is suspended','error');
+  const bid=buyerId||(l.sellerId===me.id?null:me.id);if(!bid)return toast('Open a chat from the Messages page','info');
+  const other=l.sellerId===me.id?bid:l.sellerId;
+  if(isBlockedPair(me,other))return toast('You cannot message this user','error');
+  state.thread=tidOf(lid,bid);closeAllModals();go('messages');
+}
+function threadsFor(me){
+  if(!me)return[];
+  const map={};
+  S.messages.forEach(m=>{if(m.from!==me.id&&m.to!==me.id)return;const a=map[m.threadId];if(!a||a.ts<m.ts)map[m.threadId]=m});
+  if(state.thread&&!map[state.thread])map[state.thread]={threadId:state.thread,ts:Date.now(),text:'',empty:true};
+  return Object.entries(map).map(([id,last])=>{
+    const[lid,bid]=id.split(':');const l=listingById(lid);const oid=l?(l.sellerId===me.id?bid:l.sellerId):(last.from===me.id?last.to:last.from);
+    return{id,lid,bid,l,other:userById(oid),last,unread:S.messages.filter(m=>m.threadId===id&&m.to===me.id&&!m.read).length};
+  }).filter(x=>x.other).sort((a,b)=>b.last.ts-a.last.ts);
+}
+function renderMessages(){
+  const me=currentUser();if(!me){state.view='home';renderHome();return}
+  const th=threadsFor(me);const act=state.thread?th.find(x=>x.id===state.thread):null;
+  if(act&&S.messages.some(m=>m.threadId===act.id&&m.to===me.id&&!m.read)){S.messages.forEach(m=>{if(m.threadId===act.id&&m.to===me.id)m.read=true});save('messages');setTimeout(renderChrome,0)}
+  const list=th.length?th.map(x=>`<button class="w-full text-left p-3 rounded-2xl flex gap-3 items-center ${act&&act.id===x.id?'s2':''}" onclick="state.thread='${x.id}';renderMessages()">${avatar(x.other,40)}<div class="min-w-0 flex-1"><p class="text-sm font-bold truncate">${esc(x.other.name)}</p><p class="text-[11px] text-orange-600 font-semibold truncate">${esc(x.l?x.l.title:'Removed listing')}</p><p class="text-xs muted truncate">${esc(x.last.text||'No messages yet')}</p></div>${x.unread?`<span class="chip c-orange">${x.unread}</span>`:''}</button>`).join(''):`<p class="text-sm muted p-4">No conversations yet. Open a listing and tap Chat.</p>`;
+  let pane=`<div class="hidden md:flex items-center justify-center muted text-sm h-full p-10">Select a conversation</div>`;
+  if(act){
+    const wa=waLink(act.other,`Hi, about "${act.l?act.l.title:'your listing'}" on Exchanger.`);
+    const msgs=S.messages.filter(m=>m.threadId===act.id).sort((a,b)=>a.ts-b.ts);
+    pane=`<div class="flex flex-col h-[70vh]"><div class="flex items-center gap-3 p-3 border-b" style="border-color:var(--border)"><button class="md:hidden icon-btn" onclick="state.thread=null;renderMessages()" aria-label="Back"><i class="fa-solid fa-arrow-left"></i></button>${avatar(act.other,38)}<div class="min-w-0 flex-1"><p class="text-sm font-extrabold truncate cursor-pointer" onclick="openProfile('${act.other.id}')">${esc(act.other.name)}</p><p class="text-[11px] text-orange-600 font-semibold truncate cursor-pointer" onclick="${act.l?`openListing('${act.l.id}')`:''}">${esc(act.l?act.l.title:'Removed listing')}</p></div>${wa?`<a class="btn btn-green btn-sm" target="_blank" rel="noopener noreferrer" href="${esc(wa)}"><i class="fa-brands fa-whatsapp"></i></a>`:''}</div>
+    <div id="msgList" class="flex-1 overflow-y-auto p-4 space-y-2">${msgs.length?msgs.map(m=>`<div class="flex"><div class="bubble ${m.from===me.id?'bub-me':'bub-them'}">${esc(m.text)}<div class="text-[9px] opacity-70 mt-1">${fmtTime(m.ts)}</div></div></div>`).join(''):'<p class="text-center text-xs muted mt-10">Say hello and agree on a pickup time.</p>'}</div>
+    <div class="p-3 border-t" style="border-color:var(--border)"><div class="flex flex-wrap gap-1.5 mb-2">${['Is this still available?',`Can we meet at ${act.l?act.l.location:'the library'}?`,'Can you share more photos?'].map(q=>`<button class="chip c-slate !normal-case !tracking-normal" onclick="$('msgInput').value=this.textContent">${esc(q)}</button>`).join('')}</div>
+    <form class="flex gap-2" onsubmit="sendMsg(event)"><input id="msgInput" class="inp" maxlength="500" placeholder="Type a message" autocomplete="off" required><button class="btn btn-primary" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button></form>
+    <p class="text-[10px] muted mt-2"><i class="fa-solid fa-shield-halved mr-1"></i>Never share OTPs, passwords or bank details in chat.</p></div></div>`;
+  }
+  $('view').innerHTML=pageWrap(t('messages'),'',`<div class="surface rounded-3xl overflow-hidden grid md:grid-cols-3"><div class="${act?'hidden md:block':''} md:border-r p-2 max-h-[70vh] overflow-y-auto" style="border-color:var(--border)">${list}</div><div class="md:col-span-2 ${act?'':'hidden md:block'}">${pane}</div></div>`);
+  const ml=$('msgList');if(ml)ml.scrollTop=ml.scrollHeight;
+}
+function sendMsg(e){
+  e.preventDefault();const me=currentUser();if(!me||!state.thread)return;
+  const[lid,bid]=state.thread.split(':');const l=listingById(lid);
+  if(l&&me.id!==bid&&me.id!==l.sellerId)return toast('Not allowed','error');
+  const pastMsgs=S.messages.filter(m=>m.threadId===state.thread);
+  const otherMsg=pastMsgs.find(m=>m.from===me.id?m.to:m.from);
+  const fallbackTo=otherMsg?(otherMsg.from===me.id?otherMsg.to:otherMsg.from):(l?(me.id===bid?l.sellerId:bid):bid);
+  const to=l?(me.id===bid?l.sellerId:bid):fallbackTo;
+  if(!to||isBlockedPair(me,to))return toast('You cannot message this user','error');
+  const text=$('msgInput').value.trim().slice(0,500);if(!text)return;
+  const hadUnreadFromMe=pastMsgs.some(m=>m.from===me.id&&!m.read);
+  S.messages.push({id:uid(),threadId:state.thread,listingId:lid,from:me.id,to,text,ts:Date.now(),read:false});
+  if(!hadUnreadFromMe)notify(to,`New message from ${me.name}${l?` about "${l.title}"`:''}.`,'thread:'+state.thread);
+  if(!save('messages','notifs'))return;renderMessages();const i=$('msgInput');if(i)i.focus();
+}
+
+/* ---------- notifications view ---------- */
+function renderNotifs(){
+  const me=currentUser();if(!me){state.view='home';renderHome();return}
+  const ns=S.notifs.filter(n=>n.userId===me.id);
+  const perm='Notification' in window&&Notification.permission==='default';
+  $('view').innerHTML=pageWrap(t('notifications'),'',`<div class="flex flex-wrap gap-2 mb-5"><button class="btn btn-soft btn-sm" onclick="markAllRead()">Mark all as read</button>${perm?`<button class="btn btn-soft btn-sm" onclick="Notification.requestPermission().then(renderNotifs)"><i class="fa-solid fa-bell"></i> Enable browser alerts</button>`:''}</div>
+  ${ns.length?`<div class="space-y-2.5 max-w-2xl">${ns.slice(0,80).map(n=>`<button class="w-full text-left surface rounded-2xl p-4 flex gap-3 items-start ${n.read?'opacity-70':''}" onclick="openNotif('${n.id}')"><span class="mt-1.5 w-2 h-2 rounded-full flex-shrink-0 ${n.read?'':'bg-orange-500'}"></span><div><p class="text-sm font-semibold">${esc(n.text)}</p><p class="text-[11px] muted mt-0.5">${fmtTime(n.ts)}</p></div></button>`).join('')}</div>`:emptyBox('fa-bell','All caught up','Updates about your requests, messages and saved items appear here.')}`);
+}
+function markAllRead(){const me=currentUser();if(!me)return;S.notifs.forEach(n=>{if(n.userId===me.id)n.read=true});save('notifs');renderView()}
+function openNotif(id){
+  const n=S.notifs.find(x=>x.id===id);if(!n)return;n.read=true;save('notifs');
+  if(n.link.startsWith('thread:')){state.thread=n.link.slice(7);go('messages')}
+  else if(n.link.startsWith('listing:')){go('home');openListing(n.link.slice(8))}
+  else if(n.link==='requests')go('requests');else renderView();
+}
+
+/* ---------- profiles ---------- */
+function renderProfile(){
+  const me=currentUser();if(!me){state.view='home';renderHome();return}
+  const r=ratingOf(me.id);
+  $('view').innerHTML=pageWrap(t('profile'),'',`<div class="grid lg:grid-cols-3 gap-6">
+  <div class="surface rounded-3xl p-6 text-center h-fit">${avatar(me,72)}<h2 class="text-lg font-extrabold mt-3">${esc(me.name)}</h2><p class="text-xs muted">${esc(me.email)}</p><div class="flex flex-wrap justify-center gap-1 mt-2">${trustChips(me)}</div><div class="mt-2">${ratingHtml(me.id)}</div><p class="text-[11px] muted mt-2">Member since ${fmtDate(me.createdAt)}</p></div>
+  <form class="surface rounded-3xl p-6 lg:col-span-2 space-y-4" onsubmit="saveProfile(event)">
+    <h3 class="font-extrabold">Edit profile</h3>
+    <div class="grid sm:grid-cols-2 gap-3"><div><label class="lbl">Full name</label><input id="pf_name" class="inp" maxlength="50" value="${esc(me.name)}" required></div><div><label class="lbl">College</label>${collegeField('pf',me.college)}</div>
+    <div><label class="lbl">Branch</label><select id="pf_branch" class="inp">${opts(BRANCHES,me.branch)}</select></div><div><label class="lbl">Year</label><select id="pf_year" class="inp">${opts(YEARS,me.year)}</select></div>
+    <div><label class="lbl">Mobile (10 digits)</label><input id="pf_phone" class="inp" inputmode="numeric" maxlength="10" value="${esc(me.phone||'')}" placeholder="9876543210"></div><div><label class="lbl">UPI ID (for receiving payments)</label><input id="pf_upi" class="inp" maxlength="50" value="${esc(me.upi||'')}" placeholder="name@okbank"></div></div>
+    <label class="flex items-start gap-2 text-xs font-semibold"><input type="checkbox" id="pf_wa" class="mt-0.5" ${me.showWhatsapp?'checked':''}> <span>Let signed-in students contact me on WhatsApp (your number is shown only as a chat link to verified users)</span></label>
+    <button class="btn btn-primary">Save profile</button></form>
+  <form class="surface rounded-3xl p-6 space-y-3 lg:col-span-2 lg:col-start-2" onsubmit="changePw(event)"><h3 class="font-extrabold">Change password</h3><div class="grid sm:grid-cols-2 gap-3"><input id="pw_old" type="password" class="inp" placeholder="Current password" autocomplete="current-password" required><input id="pw_new" type="password" class="inp" placeholder="New password (8+, letters and number)" autocomplete="new-password" required></div><button class="btn btn-soft">Update password</button></form>
+  <div class="surface rounded-3xl p-6 lg:col-span-2 lg:col-start-2"><h3 class="font-extrabold mb-1">Danger zone</h3><p class="text-xs muted mb-3">Deleting your account removes your listings, messages and requests.</p><button class="btn btn-danger" onclick="deleteAccount()">Delete my account</button></div></div>`);
+}
+function saveProfile(e){
+  e.preventDefault();const me=currentUser();if(!me)return;
+  const phone=$('pf_phone').value.trim(),upi=$('pf_upi').value.trim(),college=readCollege('pf');
+  if(phone&&!/^[6-9]\d{9}$/.test(phone))return toast('Enter a valid 10-digit Indian mobile number','error');
+  if(upi&&!/^[\w.\-]{2,}@[A-Za-z]{2,}$/.test(upi))return toast('Enter a valid UPI ID like name@bank','error');
+  if(!college)return toast('Select your college','error');
+  if($('pf_wa').checked&&!phone)return toast('Add a mobile number to enable WhatsApp','error');
+  Object.assign(me,{name:$('pf_name').value.trim()||me.name,college,branch:$('pf_branch').value,year:$('pf_year').value,phone,upi,showWhatsapp:$('pf_wa').checked});
+  S.listings.forEach(l=>{if(l.sellerId===me.id)l.college=college});
+  if(save('users','listings')){renderView();toast('Profile saved')}
+}
+async function changePw(e){
+  e.preventDefault();const me=currentUser();if(!me)return;
+  if(await hashPw($('pw_old').value,me.salt)!==me.passHash)return toast('Current password is wrong','error');
+  const np=$('pw_new').value;if(!strongPw(np))return toast('Password needs 8+ characters with letters and a number','error');
+  me.salt=newSalt();me.passHash=await hashPw(np,me.salt);save('users');e.target.reset();toast('Password updated');
+}
+function deleteAccount(){
+  const me=currentUser();if(!me||!confirm('Delete your account and all your data? This cannot be undone.'))return;
+  const mine=S.listings.filter(l=>l.sellerId===me.id).map(l=>l.id);
+  S.requests.filter(r=>(r.buyerId===me.id||r.sellerId===me.id)&&['pending','accepted','active'].includes(r.status)).forEach(r=>{r.status='cancelled';notify(r.buyerId===me.id?r.sellerId:r.buyerId,'A request was cancelled because the other user deleted their account.','requests')});
+  S.listings=S.listings.filter(l=>l.sellerId!==me.id);S.messages=S.messages.filter(m=>m.from!==me.id&&m.to!==me.id);
+  S.notifs=S.notifs.filter(n=>n.userId!==me.id);delete S.saved[me.id];Object.keys(S.saved).forEach(u=>S.saved[u]=S.saved[u].filter(x=>!mine.includes(x)));
+  S.users=S.users.filter(u=>u.id!==me.id);save(...KEYS);signOut();
+}
+function openProfile(id){
+  const u=userById(id);if(!u)return toast('This user no longer exists','info');const me=currentUser();
+  const rs=S.reviews.filter(r=>r.targetId===id).sort((a,b)=>b.ts-a.ts).slice(0,6);
+  const act=S.listings.filter(l=>l.sellerId===id&&!['sold','exchanged','paused'].includes(l.status)).length;
+  const deals=S.requests.filter(r=>r.status==='completed'&&(r.sellerId===id||r.buyerId===id)).length;
+  const blocked=me&&(me.blocked||[]).includes(id);
+  openModal(`<div class="text-center pt-2">${avatar(u,64)}<h3 class="text-lg font-extrabold mt-2">${esc(u.name)}</h3><p class="text-xs muted">${esc(u.year)} • ${esc(u.branch)} • ${esc(u.college)}</p><div class="flex flex-wrap justify-center gap-1 mt-2">${trustChips(u)}</div><div class="mt-2">${ratingHtml(id)}</div>
+  <div class="grid grid-cols-2 gap-3 mt-4 text-center"><div class="s2 rounded-2xl p-3"><p class="text-lg font-extrabold">${act}</p><p class="lbl !mb-0">Active listings</p></div><div class="s2 rounded-2xl p-3"><p class="text-lg font-extrabold">${deals}</p><p class="lbl !mb-0">Completed deals</p></div></div></div>
+  <h4 class="lbl mt-5">Recent reviews</h4>${rs.length?rs.map(r=>{const a=userById(r.authorId);return `<div class="s2 rounded-2xl p-3 mb-2"><div class="flex items-center justify-between"><span class="text-xs font-bold">${esc(a?a.name:'Former user')}</span>${starsHtml(r.rating)}</div>${r.text?`<p class="text-xs mt-1">${esc(r.text)}</p>`:''}</div>`}).join(''):'<p class="text-xs muted">No reviews yet.</p>'}
+  ${me&&me.id!==id?`<div class="flex gap-2 mt-4"><button class="btn btn-soft btn-sm flex-1" onclick="toggleBlock('${id}')"><i class="fa-solid fa-ban"></i> ${blocked?'Unblock':'Block'}</button><button class="btn btn-soft btn-sm flex-1" onclick="openReport('user','${id}')"><i class="fa-solid fa-flag"></i> Report</button></div>`:''}`);
+}
+function toggleBlock(id){
+  const me=requireUser();if(!me)return;me.blocked=me.blocked||[];
+  const i=me.blocked.indexOf(id);if(i>=0){me.blocked.splice(i,1);toast('User unblocked','info')}else{me.blocked.push(id);toast('User blocked. Their listings are now hidden and they cannot message you.','info')}
+  save('users');closeAllModals();renderView();
+}
+
+/* ---------- reports & moderation ---------- */
+function openReport(kind,id){
+  const me=requireUser('Sign in to report.');if(!me)return;
+  openModal(`<h3 class="text-xl font-extrabold mb-4">Report ${kind==='listing'?'listing':'user'}</h3><form class="space-y-3" onsubmit="submitReport(event,'${kind}','${id}')"><div><label class="lbl">Reason</label><select id="rp_reason" class="inp">${opts(REPORT_REASONS,REPORT_REASONS[0])}</select></div><div><label class="lbl">Details (optional)</label><textarea id="rp_text" rows="3" maxlength="300" class="inp"></textarea></div><button class="btn btn-primary w-full">Submit report</button></form>`);
+}
+function submitReport(e,kind,id){
+  e.preventDefault();const me=currentUser();if(!me)return;
+  if(S.reports.some(r=>r.reporterId===me.id&&r.targetId===id&&r.status==='open'))return toast('You already reported this','info');
+  S.reports.unshift({id:uid(),kind,targetId:id,reporterId:me.id,reason:$('rp_reason').value,text:$('rp_text').value.trim(),ts:Date.now(),status:'open'});
+  S.users.filter(u=>u.role==='admin').forEach(a=>notify(a.id,`New ${kind} report: ${$('rp_reason').value}`,'admin'));
+  save('reports','notifs');closeModal();toast('Report sent to moderators. Thank you.');
+}
+function renderAdmin(){
+  const me=currentUser();if(!me||me.role!=='admin'){state.view='home';renderHome();return}
+  const open=S.reports.filter(r=>r.status==='open');
+  const rrow=r=>{const l=r.kind==='listing'?listingById(r.targetId):null;const u=r.kind==='user'?userById(r.targetId):(l?userById(l.sellerId):null);const rep=userById(r.reporterId);
+    return `<div class="surface rounded-2xl p-4"><div class="flex flex-wrap gap-2 items-center mb-1"><span class="chip c-red">${esc(r.reason)}</span><span class="chip c-slate">${r.kind}</span><span class="text-[11px] muted">${fmtTime(r.ts)} • by ${esc(rep?rep.name:'?')}</span></div>
+    <p class="text-sm font-bold">${r.kind==='listing'?esc(l?l.title:'(deleted listing)'):esc(u?u.name:'(deleted user)')}</p>${r.text?`<p class="text-xs mt-1">${esc(r.text)}</p>`:''}
+    <div class="flex flex-wrap gap-2 mt-3">${l?`<button class="btn btn-soft btn-sm" onclick="openListing('${l.id}')">View</button><button class="btn btn-danger btn-sm" onclick="deleteListing('${l.id}')">Remove listing</button>`:''}${u&&u.id!==me.id?`<button class="btn btn-danger btn-sm" onclick="toggleBan('${u.id}')">${u.banned?'Unsuspend':'Suspend'} user</button>`:''}<button class="btn btn-soft btn-sm" onclick="resolveReport('${r.id}')">Dismiss</button></div></div>`};
+  const users=S.users.filter(u=>!u.demo);
+  $('view').innerHTML=pageWrap(t('admin'),'Review reports and manage users',`<h3 class="font-extrabold mb-3">Open reports (${open.length})</h3><div class="space-y-3 mb-8">${open.length?open.map(rrow).join(''):'<p class="text-sm muted">No open reports.</p>'}</div>
+  <h3 class="font-extrabold mb-3">Students (${users.length})</h3><div class="surface rounded-2xl divide-y mb-8" style="--tw-divide-opacity:1">${users.map(u=>`<div class="p-3 flex items-center gap-3" style="border-color:var(--border)">${avatar(u,34)}<div class="min-w-0 flex-1"><p class="text-sm font-bold truncate">${esc(u.name)} ${u.role==='admin'?'<span class="chip c-purple">Mod</span>':''}${u.banned?'<span class="chip c-red">Suspended</span>':''}</p><p class="text-[11px] muted truncate">${esc(u.email)} • ${esc(u.college)}</p></div>${u.id!==me.id?`<button class="btn btn-soft btn-sm" onclick="toggleBan('${u.id}')">${u.banned?'Unsuspend':'Suspend'}</button>`:''}</div>`).join('')}</div>
+  <button class="btn btn-danger" onclick="removeSample()">Remove all sample listings and users</button>`);
+}
+function resolveReport(id){const r=S.reports.find(x=>x.id===id);if(r){r.status='resolved';save('reports');renderView()}}
+function toggleBan(id){const me=currentUser();if(!me||me.role!=='admin'||id===me.id)return;const u=userById(id);if(!u)return;u.banned=!u.banned;save('users');closeAllModals();renderView();toast(u.banned?'User suspended':'User restored','info')}
+function removeSample(){
+  const me=currentUser();if(!me||me.role!=='admin'||!confirm('Remove all sample data?'))return;
+  const demoUserIds=S.users.filter(u=>u.demo).map(u=>u.id);
+  const demoListingIds=S.listings.filter(l=>l.demo).map(l=>l.id);
+  S.listings=S.listings.filter(l=>!l.demo);S.users=S.users.filter(u=>!u.demo);
+  S.requests=S.requests.filter(r=>listingById(r.listingId)&&!demoUserIds.includes(r.buyerId)&&!demoUserIds.includes(r.sellerId));
+  S.messages=S.messages.filter(m=>listingById(m.listingId)&&!demoUserIds.includes(m.from)&&!demoUserIds.includes(m.to));
+  S.reports=S.reports.filter(r=>!demoUserIds.includes(r.reporterId)&&!demoUserIds.includes(r.targetId)&&!demoListingIds.includes(r.targetId));
+  S.reviews=S.reviews.filter(v=>!demoUserIds.includes(v.authorId)&&!demoUserIds.includes(v.targetId));
+  save(...KEYS);renderView();toast('Sample data removed','info');
+}
+
+/* ---------- info pages ---------- */
+function openInfo(k){
+  const P={
+  safety:['Campus Safety',`<ul class="list-disc pl-5 space-y-2"><li>Meet in busy public campus spots such as the canteen, library or hostel gate, in daylight where possible.</li><li>Inspect the item before you pay or hand over a deposit. Test calculators, check book pages, ride the cycle.</li><li>Never share OTPs, passwords, Aadhaar or bank details in chat. Exchanger staff will never ask for them.</li><li>Pay only by UPI after inspection. Exchanger does not hold or verify payments.</li><li>For rentals, agree on dates, deposit and condition in chat first, and take a photo at handover and return.</li><li>Use Report or Block if anything feels off.</li></ul>`],
+  faq:['FAQ',`<div class="space-y-4"><div><b>Is it free?</b><p>Yes. There is no platform commission.</p></div><div><b>How does renting work?</b><p>Pick dates on a listing, send a request, and the seller accepts. They mark the item handed over and later returned. The calendar blocks double bookings and you get return reminders.</p></div><div><b>What is the deposit?</b><p>A refundable amount agreed with the seller, returned when the item comes back in the same condition.</p></div><div><b>Do I need a college email?</b><p>No. Any email works, and we verify it with a 6-digit code. If you sign up with a .ac.in, .edu.in or .edu address you also get a Verified student badge, which helps buyers and sellers trust you. Be extra careful with accounts that only have the Email verified tag.</p></div><div><b>Can I negotiate?</b><p>If a seller marks a price negotiable, use Buy / Make an Offer to propose your price.</p></div><div><b>What happens on overdue returns?</b><p>Both sides get an overdue alert and the request is flagged. Resolve it in chat, and report repeated problems.</p></div></div>`],
+  terms:['Terms of Use',`<div class="space-y-3"><p>By using Exchanger you confirm that the college and details you enter are true. Only accounts signed up with a college email carry the Verified student badge.</p><p>List only items you own and can legally lend or sell. Prohibited: stolen goods, weapons, alcohol, drugs, counterfeit products, exam papers or leaked material, and anything illegal in India.</p><p>Deals are between students. Exchanger is a listing and messaging platform and is not responsible for item quality, payment disputes or losses. Inspect before you pay.</p><p>Moderators may remove listings or suspend accounts that break these rules. Be respectful. Harassment is not tolerated.</p><p class="text-xs muted">Prototype notice: replace this text with terms reviewed by a lawyer before launch.</p></div>`],
+  privacy:['Privacy',`<div class="space-y-3"><p><b>What we store:</b> your name, college email, college, branch, year, optional phone and UPI ID, your listings, messages, requests and reviews.</p><p><b>Who sees what:</b> other students see your name, college, year, branch, ratings and listings. Your email is never shown. Your phone number is never displayed, only used for an optional WhatsApp chat link for signed-in students if you turn it on.</p><p><b>Your control:</b> edit your profile anytime, block users, and delete your account from the Profile page to remove your data.</p><p class="text-xs muted">Prototype notice: in this version everything is stored in your own browser. When you connect a real backend, update this policy to describe where data is hosted.</p></div>`]
+  };
+  openModal(`<h3 class="text-xl font-extrabold mb-4">${P[k][0]}</h3><div class="text-sm leading-relaxed">${P[k][1]}</div>`);
+}
+
+/* ---------- cross-tab sync, init ---------- */
+window.addEventListener('storage',e=>{
+  if(!e.key||!e.key.startsWith('exch2_'))return;
+  loadState();renderChrome();
+  if($('modalRoot').children.length)return;
+  if(AUTH_VIEWS.includes(state.view)&&!currentUser()){state.view='home';location.hash='#/home';renderHome();return}
+  if(state.view==='messages'){const v=$('msgInput')?$('msgInput').value:'';renderMessages();if(v&&$('msgInput'))$('msgInput').value=v}
+  else if(state.view!=='home')renderView();else renderGrid();
+});
+async function init(){
+  loadState();seedIfEmpty();applyTheme();
+  if(!S.session||S.session.exp<Date.now()){S.session=null;DB.del('session')}
+  await syncFromServer();
+  runChecks();renderChrome();route();
+  setInterval(()=>{runChecks();renderChrome()},60000);
+  setInterval(syncFromServer,3000);
+  if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+init();
+</script>
+</body>
+</html>

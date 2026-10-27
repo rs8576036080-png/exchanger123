@@ -1,0 +1,15 @@
+{
+  "name": "Exchanger - Campus Exchange & Rental Hub",
+  "short_name": "Exchanger",
+  "description": "Rent, exchange or buy books, lab gear, calculators and cycles from fellow college students.",
+  "start_url": "./exchanger11.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#ea580c",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
